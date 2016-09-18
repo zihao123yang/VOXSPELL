@@ -23,7 +23,6 @@ public class Main extends Application {
         launch(args);
 
         DataBase dataBaseTest = new DataBase();
-        dataBaseTest.printOriginal();
         dataBaseTest.makeQuizList(2);
     }
 }

@@ -21,18 +21,22 @@ public class Word implements Serializable, Comparable<Word> {
     }
 
     public void addMastered() {
+
         _numMastered++;
     }
 
     public void addFaulted() {
+
         _numFaulted++;
     }
 
     public void addFailed() {
+
         _numFailed++;
     }
 
-    public String getWord() {
+    public String name() {
+
         return _word;
     }
 

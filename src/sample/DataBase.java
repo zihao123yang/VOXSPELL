@@ -44,18 +44,20 @@ public class DataBase {
     public void importWordList() {
         String currentLine;
         int level = 1;
-        ArrayList<Word> levelList = null;
+        ArrayList<Word> levelList = new ArrayList<>();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("NZCER-spelling-lists.txt"));
 
             while ((currentLine = br.readLine()) != null) {
                 if (currentLine.charAt(0) == '%') {
-                    level = currentLine.charAt(1);
+                    System.out.println(currentLine);
+                    System.out.println(level);
                     levelList = new ArrayList<Word>();
-                    if (level < 11) {
-                        _wordList.put(level - 1, levelList);
+                    if (level < 11 && level > 0) {
+                        _wordList.put(level, levelList);
                     }
+                    level++;
                 } else {
                     levelList.add(new Word(currentLine, level));
                 }
@@ -84,12 +86,30 @@ public class DataBase {
         ArrayList<Word> levelList = _wordList.get(level);
         int size = levelList.size();
 
+        //--------------------------------------------------------
+        for  (int debug = 0; debug < levelList.size(); debug++) {
+            System.out.print(levelList.get(debug).name() + " ");
+        }
+        System.out.println();
+        //--------------------------------------------------------
+
+
         randomizeList(levelList);
+
+
+        //--------------------------------------------------------
+        for  (int debug = 0; debug < levelList.size(); debug++) {
+            System.out.print(levelList.get(debug).name() + " ");
+        }
+        System.out.println();
+        //--------------------------------------------------------
+
 
         if (level > 10) {
             System.out.println("no more levels");
+            return null;
         } else if (size >= 10) {
-            return (ArrayList<Word>) levelList.subList(0, 9);
+            return new ArrayList<Word> (levelList.subList(0, 9));
 
         } else {
             return levelList;
@@ -97,10 +117,7 @@ public class DataBase {
 
         // debug statements
         // levelList debug
-        for  (int debug = 0; debug < levelList.size(); debug++) {
-            System.out.print(levelList.get(debug) + " ");
-        }
-        System.out.println();
+
 
     }
 
@@ -196,13 +213,6 @@ public class DataBase {
     public int sizeOfStats() {
 
         return _wordListOld.size();
-    }
-
-    public void printOriginal() {
-        for (int i = 0; i < _wordList.size(); i++) {
-            System.out.print(_wordList.get(i) + " ");
-        }
-        System.out.println();
     }
 
 
