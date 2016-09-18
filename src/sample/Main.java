@@ -21,5 +21,9 @@ public class Main extends Application {
     public static void main(String[] args) {
 
         launch(args);
+
+        DataBase dataBaseTest = new DataBase();
+        dataBaseTest.printOriginal();
+        dataBaseTest.makeQuizList(2);
     }
 }

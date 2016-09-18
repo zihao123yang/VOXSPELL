@@ -8,11 +8,11 @@ import java.io.Serializable;
 public class Word implements Serializable, Comparable<Word> {
 
     private static final long serialVersionUID = 1L;
-    String _word;
-    int _numMastered;
-    int _numFaulted;
-    int _numFailed;
-    int _level;
+    private String _word;
+    private int _numMastered;
+    private int _numFaulted;
+    private int _numFailed;
+    private int _level;
 
 
     public Word(String word, int level) {
