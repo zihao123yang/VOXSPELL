@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by zihao123yang on 16/09/16.
@@ -8,29 +9,29 @@ import java.util.ArrayList;
 public class Spelling_Logic {
 
     private DataBase _dataBase;
-    private ArrayList<String> _wordsToTest;
+    private ArrayList<Word> _wordList;
 
     private boolean _isNewQuiz;
     private boolean _inputFlag;
     private boolean _repeatFlag;
-    private boolean _
+    private int _position;
+
 
 
 
     public void setUpQuiz (int level, boolean newQuiz) {
         _inputFlag = true;
         _repeatFlag = false;
-        ArrayList<Word> wordlist;
 
         if (newQuiz == true) {
-            wordlist = _dataBase.makeQuizList(level);
+            _wordList = _dataBase.makeQuizList(level);
         } else {
             // temporary, revision quiz logic not completed- revision quiz for each level?
-            wordlist = new ArrayList<Word>();
+            _wordList = new ArrayList<Word>();
 
         }
 
-
+        _position = 0;
 
 
     }
@@ -38,7 +39,16 @@ public class Spelling_Logic {
 
     public void spellingQuiz() {
 
+        // this is only for debug purpose, GUI hasnt been implemented yet
+        Scanner userInput = new Scanner(System.in);
+
         if (_inputFlag == true) {
+
+
+            //festival call
+            // "Please spell the word " + _wordList.get(_position) +" . " + _wordList.get(_position)
+            System.out.println("Spell word " + (_position + 1) + " out of " + _position + ": ");
+
 
         }
 
