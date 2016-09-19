@@ -25,7 +25,7 @@ public class DataBase {
     //private ArrayList<String> _wordList;
 
 
-    private Map<Integer, ArrayList<Word>> _wordList;
+    private Map<Integer, ArrayList<String>> _wordList;
 
 
     public DataBase() {
@@ -34,7 +34,7 @@ public class DataBase {
         //_wordList = new ArrayList<String>();
 
         if (_wordList == null) {
-            _wordList = new HashMap<Integer, ArrayList<Word>>();
+            _wordList = new HashMap<Integer, ArrayList<String>>();
             importWordList();
         }
 
@@ -44,7 +44,7 @@ public class DataBase {
     public void importWordList() {
         String currentLine;
         int level = 1;
-        ArrayList<Word> levelList = new ArrayList<>();
+        ArrayList<String> levelList = new ArrayList<>();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("NZCER-spelling-lists.txt"));
@@ -53,13 +53,13 @@ public class DataBase {
                 if (currentLine.charAt(0) == '%') {
                     System.out.println(currentLine);
                     System.out.println(level);
-                    levelList = new ArrayList<Word>();
+                    levelList = new ArrayList<String>();
                     if (level < 11 && level > 0) {
                         _wordList.put(level, levelList);
                     }
                     level++;
                 } else {
-                    levelList.add(new Word(currentLine, level));
+                    levelList.add(currentLine);
                 }
             }
             br.close();
@@ -69,7 +69,7 @@ public class DataBase {
     }
 
 
-    public ArrayList<Word> makeQuizList(int level) {
+    public ArrayList<String> makeQuizList(int level) {
 //        System.out.println("entering method");
 //        int lowerBound = _wordList.indexOf(Integer.toString(level));
 //        System.out.println("lowerBound: "+ lowerBound);
@@ -83,12 +83,13 @@ public class DataBase {
 //            levelList.add(_wordList.get(i));
 
 
-        ArrayList<Word> levelList = _wordList.get(level);
+        ArrayList<String> levelList = _wordList.get(level);
         int size = levelList.size();
 
+/*
         //--------------------------------------------------------
         for  (int debug = 0; debug < levelList.size(); debug++) {
-            System.out.print(levelList.get(debug).name() + " ");
+            System.out.print(levelList.get(debug) + " ");
         }
         System.out.println();
         //--------------------------------------------------------
@@ -99,17 +100,18 @@ public class DataBase {
 
         //--------------------------------------------------------
         for  (int debug = 0; debug < levelList.size(); debug++) {
-            System.out.print(levelList.get(debug).name() + " ");
+            System.out.print(levelList.get(debug) + " ");
         }
         System.out.println();
         //--------------------------------------------------------
 
+*/
 
         if (level > 10) {
             System.out.println("no more levels");
             return null;
         } else if (size >= 10) {
-            return new ArrayList<Word> (levelList.subList(0, 9));
+            return new ArrayList<String> (levelList.subList(0, 9));
 
         } else {
             return levelList;
@@ -190,7 +192,7 @@ public class DataBase {
     }
 
 
-    public void randomizeList(ArrayList<Word> list) {
+    public void randomizeList(ArrayList<String> list) {
 
         long seed = System.nanoTime();
         Collections.shuffle(list, new Random(seed));
