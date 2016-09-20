@@ -15,12 +15,12 @@ public class Spelling_Logic {
     private boolean _inputFlag;
     private boolean _repeatFlag;
     private int _position;
+    private int _numWords;
 
     private SpellingQuizController _quizController;
 
 
     public Spelling_Logic() {
-
 
         _dataBase = new DataBase();
     }
@@ -39,6 +39,9 @@ public class Spelling_Logic {
 
         }
 
+        System.out.println(_wordList.size());
+        _numWords = 10;
+
         _position = 0;
 
     }
@@ -47,15 +50,13 @@ public class Spelling_Logic {
     public void spellingQuiz(String input) {
 
         // this is only for debug purpose, GUI hasnt been implemented yet
-        Scanner userInput = new Scanner(System.in);
 
         if (_inputFlag == false) {
 
 
             //festival call
             // "Please spell the word " + _wordList.get(_position) +" . " + _wordList.get(_position)
-            System.out.println(_wordList.get(_position));
-            _quizController.setDisplay("Spell word " + (_position + 1) + " out of " + _position + ": ");
+            System.out.println("Spell word: " + _wordList.get(_position));
             _inputFlag = true;
             return;
 
@@ -64,14 +65,39 @@ public class Spelling_Logic {
 
         if (_repeatFlag == false) {
 
-            _quizController.setDisplay(input);
-
             if (_wordList.get(_position).equals(input)) {
                 // festival call - correct!
-                _quizController.setDisplay("Correct!");
+                System.out.println("correct!");
+
+            } else {
+
+                System.out.println("incorrect, try again");
+
+                _repeatFlag = true;
+                return;
             }
 
         }
+
+        if (_repeatFlag == true) {
+
+            if (_wordList.get(_position).equals(input)) {
+                System.out.println("correct!");
+            } else {
+                System.out.println("incorrect");
+            }
+        }
+
+        _repeatFlag = false;
+        _position++;
+
+        if (_position < _numWords ) {
+            System.out.println("Spell word: " + _wordList.get(_position));
+            return;
+        } else {
+            System.out.println("Quiz finished");
+        }
+
 
     }
 

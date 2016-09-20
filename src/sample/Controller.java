@@ -15,24 +15,6 @@ import java.io.IOException;
 
 public class Controller {
 
-
-    public void newSpellingQuizClicked(){
-        System.out.println("User clicked new spelling quiz...");
-    }
-
-    public void reviewQuizClicked(){
-        System.out.println("User clicked review quiz...");
-    }
-
-    public void viewStatisticsClicked(){
-        System.out.println("User clicked view statistics...");
-    }
-
-    public void clearStatisticsClicked(){
-        System.out.println("User clicked clear statistics...");
-    }
-
-
     private Spelling_Logic _spellingLogic = new Spelling_Logic();
 
 
@@ -43,7 +25,7 @@ public class Controller {
     @FXML
     public void goToSpelling() throws IOException {
 
-        _spellingLogic.setUpQuiz(2, true);
+
 
 
         Stage stage = (Stage) button.getScene().getWindow();
@@ -53,7 +35,6 @@ public class Controller {
 
 
     }
-
 
 
 

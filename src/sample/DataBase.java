@@ -85,6 +85,7 @@ public class DataBase {
 
         ArrayList<String> levelList = _wordList.get(level);
         int size = levelList.size();
+        randomizeList(levelList);
 
 /*
         //--------------------------------------------------------
@@ -111,7 +112,7 @@ public class DataBase {
             System.out.println("no more levels");
             return null;
         } else if (size >= 10) {
-            return new ArrayList<String> (levelList.subList(0, 9));
+            return new ArrayList<String> (levelList.subList(0, 10));
 
         } else {
             return levelList;
@@ -217,5 +218,6 @@ public class DataBase {
         return _wordListOld.size();
     }
 
+    //fdsfdsfsdf
 
 }
