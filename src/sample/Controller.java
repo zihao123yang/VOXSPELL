@@ -15,10 +15,7 @@ import java.io.IOException;
 
 public class Controller {
 
-
-    public void newSpellingQuizClicked(){
-        System.out.println("User clicked new spelling quiz...");
-    }
+    private Spelling_Logic _spellingLogic = new Spelling_Logic();
 
     public void reviewQuizClicked(){
         System.out.println("User clicked review quiz...");
@@ -33,7 +30,7 @@ public class Controller {
     }
 
 
-    private Spelling_Logic _spellingLogic = new Spelling_Logic();
+
 
 
     @FXML
@@ -42,6 +39,8 @@ public class Controller {
 
     @FXML
     public void goToSpelling() throws IOException {
+
+        System.out.println("User clicked new spelling quiz");
 
         _spellingLogic.setUpQuiz(2, true);
 
