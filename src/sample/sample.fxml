@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.effect.*?>
@@ -42,7 +41,7 @@
                               <Image url="@../../Dark_Goldenrod_429844_i0.png" />
                            </image>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="31.0" layoutY="56.0" onMouseClicked="#newSpellingQuizClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW SPELLING QUIZ" textAlignment="CENTER" wrappingWidth="233.82177734375">
+                        <Text fill="WHITE" layoutX="31.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW SPELLING QUIZ" textAlignment="CENTER" wrappingWidth="233.82177734375">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -51,7 +50,7 @@
                   </Pane>
                   <Pane layoutX="10.0" layoutY="10.0" onMouseClicked="#reviewQuizClicked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ImageView onMouseClicked="#reviewQuizClicked">
+                        <ImageView>
                            <image>
                               <Image url="@../../Smokey_Topaz_429509_i0.png" />
                            </image>
@@ -70,7 +69,7 @@
                               <Image url="@../../Myrtle_Green_1395379.png" />
                            </image>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="31.0" layoutY="57.0" onMouseClicked="#viewStatisticsClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW STATISTICS" textAlignment="CENTER" wrappingWidth="233.82177734375">
+                        <Text fill="WHITE" layoutX="31.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW STATISTICS" textAlignment="CENTER" wrappingWidth="233.82177734375">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -84,7 +83,7 @@
                               <Image url="@../../Pearly_Purple_429589_i0.png" />
                            </image>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="31.0" layoutY="57.0" onContextMenuRequested="#clearStatisticsClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="CLEAR STATISTICS" textAlignment="CENTER" wrappingWidth="233.82177734375">
+                        <Text fill="WHITE" layoutX="31.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLEAR STATISTICS" textAlignment="CENTER" wrappingWidth="233.82177734375">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -97,5 +96,3 @@
       </SplitPane>
    </children>
 </VBox>
-
-
