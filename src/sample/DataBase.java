@@ -42,6 +42,7 @@ public class DataBase {
     }
 
     public void importWordList() {
+
         String currentLine;
         int level = 1;
         ArrayList<String> levelList = new ArrayList<>();
@@ -62,7 +63,9 @@ public class DataBase {
                     levelList.add(currentLine);
                 }
             }
+
             br.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

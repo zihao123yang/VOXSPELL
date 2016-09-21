@@ -14,17 +14,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox alignment="CENTER" maxHeight="400.0" maxWidth="600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-padding: 0 1 0 1; -fx-box-border: transparent;" VBox.vgrow="ALWAYS">
          <items>
-            <Pane prefHeight="393.0" prefWidth="309.0">
+            <Pane prefHeight="393.0" prefWidth="309.0" style="-fx-background-color: #0077BE;">
                <children>
-                  <ImageView fitHeight="816.0" fitWidth="815.0" layoutX="-14.0" layoutY="-14.0">
-                     <image>
-                        <Image url="@../../Ocean_Boat_Blue_429668_i0.png" />
-                     </image>
-                  </ImageView>
                   <Text fill="WHITE" layoutX="31.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOXSPELL" textAlignment="CENTER" wrappingWidth="233.82177734375">
                      <font>
                         <Font size="42.0" />
@@ -34,27 +29,17 @@
             </Pane>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Pane layoutX="10.0" layoutY="10.0" onMouseClicked="#newSpellingQuizClicked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <Pane layoutX="10.0" layoutY="10.0" onMouseClicked="#goToSpelling" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B8860B;" VBox.vgrow="ALWAYS">
                      <children>
-                        <ImageView>
-                           <image>
-                              <Image url="@../../Dark_Goldenrod_429844_i0.png" />
-                           </image>
-                        </ImageView>
-                        <Text fill="WHITE" layoutX="31.0" layoutY="56.0" onMouseClicked="#newSpellingQuizClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW SPELLING QUIZ" textAlignment="CENTER" wrappingWidth="233.82177734375">
+                        <Text fill="WHITE" layoutX="31.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW SPELLING QUIZ" textAlignment="CENTER" wrappingWidth="233.82177734375">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
                      </children>
                   </Pane>
-                  <Pane layoutX="10.0" layoutY="10.0" onMouseClicked="#reviewQuizClicked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <Pane layoutX="10.0" layoutY="10.0" onMouseClicked="#reviewQuizClicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #933D41;" VBox.vgrow="ALWAYS">
                      <children>
-                        <ImageView onMouseClicked="#reviewQuizClicked">
-                           <image>
-                              <Image url="@../../Smokey_Topaz_429509_i0.png" />
-                           </image>
-                        </ImageView>
                         <Text fill="WHITE" layoutX="31.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REVIEW QUIZ" textAlignment="CENTER" wrappingWidth="233.82177734375">
                            <font>
                               <Font size="22.0" />
@@ -62,28 +47,18 @@
                         </Text>
                      </children>
                   </Pane>
-                  <Pane layoutX="10.0" layoutY="209.0" onMouseClicked="#viewStatisticsClicked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <Pane layoutX="10.0" layoutY="209.0" onMouseClicked="#viewStatisticsClicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #317873;" VBox.vgrow="ALWAYS">
                      <children>
-                        <ImageView>
-                           <image>
-                              <Image url="@../../Myrtle_Green_1395379.png" />
-                           </image>
-                        </ImageView>
-                        <Text fill="WHITE" layoutX="31.0" layoutY="57.0" onMouseClicked="#viewStatisticsClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW STATISTICS" textAlignment="CENTER" wrappingWidth="233.82177734375">
+                        <Text fill="WHITE" layoutX="31.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW STATISTICS" textAlignment="CENTER" wrappingWidth="233.82177734375">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
                      </children>
                   </Pane>
-                  <Pane layoutX="10.0" layoutY="276.0" onMouseClicked="#clearStatisticsClicked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <Pane layoutX="10.0" layoutY="276.0" onMouseClicked="#clearStatisticsClicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B768A2;" VBox.vgrow="ALWAYS">
                      <children>
-                        <ImageView>
-                           <image>
-                              <Image url="@../../Pearly_Purple_429589_i0.png" />
-                           </image>
-                        </ImageView>
-                        <Text fill="WHITE" layoutX="31.0" layoutY="57.0" onContextMenuRequested="#clearStatisticsClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="CLEAR STATISTICS" textAlignment="CENTER" wrappingWidth="233.82177734375">
+                        <Text fill="WHITE" layoutX="31.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLEAR STATISTICS" textAlignment="CENTER" wrappingWidth="233.82177734375">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -96,5 +71,3 @@
       </SplitPane>
    </children>
 </VBox>
-
-

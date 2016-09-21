@@ -21,6 +21,7 @@ public class Main extends Application {
         primaryStage.setTitle("VOXSPELL");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 
 
@@ -30,7 +31,5 @@ public class Main extends Application {
 
         launch(args);
 
-        //DataBase dataBaseTest = new DataBase();
-        //dataBaseTest.makeQuizList(2);
     }
 }

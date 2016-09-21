@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+//main menu gui controller
 public class Controller {
 
     private Spelling_Logic _spellingLogic = new Spelling_Logic();
@@ -28,9 +29,6 @@ public class Controller {
     public void clearStatisticsClicked(){
         System.out.println("User clicked clear statistics...");
     }
-
-
-
 
 
     @FXML
@@ -49,6 +47,8 @@ public class Controller {
         Parent root = FXMLLoader.load(getClass().getResource("spellingQuizScene.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
+
+
 
 
     }
