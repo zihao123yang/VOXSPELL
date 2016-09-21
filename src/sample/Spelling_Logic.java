@@ -16,6 +16,7 @@ public class Spelling_Logic {
 
     private DataBase _dataBase;
     private ArrayList<String> _wordList;
+    private Statistics _stats;
 
     private boolean _isNewQuiz;
     private boolean _inputFlag;
@@ -51,6 +52,7 @@ public class Spelling_Logic {
 
         _position = 0;
 
+        _stats = new Statistics(_wordList.size());
 
     }
 
@@ -96,6 +98,8 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(word);
                 }
 
+                _stats.increaseMastered();
+
             } else {
 
                 Festival.callFestival("Incorrect! Please try again" + _wordList.get(_position) + "... " + _wordList.get(_position));
@@ -126,6 +130,8 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(word);
                 }
 
+                _stats.increaseFaulted();
+
             } else {
                 Festival.callFestival("Incorrect...");
                 System.out.println("incorrect");
@@ -142,7 +148,7 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(word);
                 }
 
-
+                _stats.increaseFailed();
 
 
             }
@@ -158,7 +164,13 @@ public class Spelling_Logic {
         } else {
             Festival.callFestival("Quiz finished!");
             System.out.println("Quiz finished");
-            levelComplete();
+
+            if (_stats.levelPassed()) {
+                levelComplete();
+            } else {
+                levelFailed();
+            }
+
         }
 
 
@@ -169,7 +181,7 @@ public class Spelling_Logic {
         Parent root = null;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            root = FXMLLoader.load(getClass().getResource("LevelComplete.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -178,8 +190,18 @@ public class Spelling_Logic {
         stage.show();
     }
 
-    public void levelIncomplete() {
+    public void levelFailed() {
+        Stage stage = Main.getPrimaryStage();
+        Parent root = null;
 
+        try {
+            root = FXMLLoader.load(getClass().getResource("LevelFailed.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
     }
 
 

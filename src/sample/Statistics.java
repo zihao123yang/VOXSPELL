@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.layout.Pane;
+
 /**
  * Created by eli on 21/09/16.
  */
@@ -36,5 +38,13 @@ public class Statistics {
 
     public double calculateAccurracy() {
         return _mastered/_wordsTested;
+    }
+
+    public boolean levelPassed() {
+        if (_mastered >= 9) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
