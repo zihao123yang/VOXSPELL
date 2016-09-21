@@ -20,7 +20,16 @@ public class DataBase {
 
     private static DataBase instance = null;
 
-    public DataBase() {
+    private File _statsFile = new File("stats.ser");
+    private File _failedFile = new File("failedStats.ser");
+    private ArrayList<Word> _storedStats;
+    private ArrayList<Word> _failedList;
+    //private ArrayList<String> _wordList;
+
+    private Map<Integer, ArrayList<String>> _wordList;
+
+
+    private DataBase() {
         _storedStats = new ArrayList<Word>();
         _failedList = new ArrayList<Word>();
         //_wordList = new ArrayList<String>();
@@ -39,13 +48,6 @@ public class DataBase {
         return instance;
     }
 
-    private File _statsFile = new File("stats.ser");
-    private File _failedFile = new File("failedStats.ser");
-    private ArrayList<Word> _storedStats;
-    private ArrayList<Word> _failedList;
-    //private ArrayList<String> _wordList;
-
-    private Map<Integer, ArrayList<String>> _wordList;
 
 
 

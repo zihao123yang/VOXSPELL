@@ -48,9 +48,10 @@ public class SpellingQuizController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        _spellingLogic.setUpQuiz(2, true);
+        _spellingLogic.setUpQuiz(true);
         _spellingLogic.spellingQuiz("");
 
+        System.out.println(Level.getCurrentlevel());
     }
 
 

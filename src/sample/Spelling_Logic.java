@@ -34,12 +34,12 @@ public class Spelling_Logic {
 
 
 
-    public void setUpQuiz (int level, boolean newQuiz) {
+    public void setUpQuiz (boolean newQuiz) {
         _inputFlag = false;
         _repeatFlag = false;
 
         if (newQuiz == true) {
-            _wordList = _dataBase.makeQuizList(level);
+            _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
             // temporary, revision quiz logic not completed- revision quiz for each level?
             _wordList = new ArrayList<String>();
@@ -87,10 +87,12 @@ public class Spelling_Logic {
                 }
 
                 if (_dataBase.wordSeen(word)) {
+                    System.out.println("adding mastered old");
                     word = _dataBase.getWordStatsList(word);
                     word.addMastered();
                 } else {
                     word.addMastered();
+                    System.out.println("adding mastered new");
                     _dataBase.addToWordList(word);
                 }
 
@@ -156,13 +158,13 @@ public class Spelling_Logic {
         } else {
             Festival.callFestival("Quiz finished!");
             System.out.println("Quiz finished");
-            goToNextScene();
+            levelComplete();
         }
 
 
     }
 
-    public void goToNextScene()  {
+    public void levelComplete()  {
         Stage stage = Main.getPrimaryStage();
         Parent root = null;
 
@@ -176,6 +178,9 @@ public class Spelling_Logic {
         stage.show();
     }
 
+    public void levelIncomplete() {
+
+    }
 
 
 

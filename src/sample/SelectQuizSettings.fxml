@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0077BE;" xmlns="http://javafx.com/javafx/8.0.102-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SelectQuizSettingsController">
+   <children>
+      <Text fill="WHITE" layoutX="139.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOXSPELL: SETTINGS SELECT">
+         <font>
+            <Font name="Loma" size="21.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="180.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOICE:" underline="true">
+         <font>
+            <Font name="Loma" size="15.0" />
+         </font>
+      </Text>
+      <ChoiceBox layoutX="261.0" layoutY="144.0" prefWidth="150.0" style="-fx-background-color: #FDFD96;" />
+      <GridPane alignment="CENTER" layoutX="10.0" layoutY="270.0" prefHeight="44.0" prefWidth="589.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="LEVEL:" underline="true" wrappingWidth="50.22216796875">
+               <font>
+                  <Font name="Loma" size="15.0" />
+               </font>
+            </Text>
+            <ToggleButton fx:id="level1" mnemonicParsing="false" onAction="#level1Pressed" prefHeight="25.0" prefWidth="64.0" text="1" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets right="15.0" />
+               </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup" />
+               </toggleGroup>
+            </ToggleButton>
+            <ToggleButton fx:id="level2" mnemonicParsing="false" onAction="#level2Pressed" prefHeight="25.0" prefWidth="68.0" text="2" toggleGroup="$toggleGroup" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets right="15.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#level3Pressed" prefHeight="25.0" prefWidth="58.0" text="3" toggleGroup="$toggleGroup" GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets right="15.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#level4Pressed" prefHeight="25.0" prefWidth="74.0" text="4" toggleGroup="$toggleGroup" GridPane.columnIndex="4">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#level5Pressed" prefHeight="25.0" prefWidth="104.0" text="5" toggleGroup="$toggleGroup" GridPane.columnIndex="5">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#level6Pressed" prefHeight="25.0" prefWidth="82.0" text="6" toggleGroup="$toggleGroup" GridPane.columnIndex="6">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#level7Pressed" prefHeight="25.0" prefWidth="83.0" text="7" toggleGroup="$toggleGroup" GridPane.columnIndex="7">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#level8Pressed" prefHeight="25.0" prefWidth="82.0" text="8" toggleGroup="$toggleGroup" GridPane.columnIndex="8">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#level9Pressed" prefHeight="25.0" prefWidth="85.0" text="9" toggleGroup="$toggleGroup" GridPane.columnIndex="9">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#level10Pressed" prefHeight="25.0" prefWidth="82.0" text="10" toggleGroup="$toggleGroup" GridPane.columnIndex="10">
+               <GridPane.margin>
+                  <Insets right="15.0" />
+               </GridPane.margin>
+            </ToggleButton>
+         </children>
+      </GridPane>
+      <Button layoutX="415.0" layoutY="337.0" mnemonicParsing="false" onAction="#continueToQuiz" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #4CBB17;" text="Continue . . ." />
+      <Button layoutX="25.0" layoutY="337.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="166.0" text="Return to main menu" />
+   </children>
+</Pane>

@@ -6,8 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
@@ -21,31 +20,34 @@ public class Controller implements Initializable {
 
 
     @FXML
-    private Button button;
+    private Pane newQuizButton;
 
 
     @FXML
-    public void goToSpelling() throws IOException {
+    public void newSpellingQuizClicked() throws IOException {
 
-        Stage stage = (Stage) button.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("spellingQuizScene.fxml"));
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("SelectQuizSettings.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
+    }
+
+    public void reviewQuizClicked() {
+
+    }
+
+    public void viewStatisticsClicked() {
+
+    }
+
+    public void clearStatisticsClicked() {
+
     }
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        try {
-            _dataBase.loadFailed();
-            _dataBase.loadStats();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
         _dataBase.printSavedFIles();
     }

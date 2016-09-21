@@ -20,13 +20,22 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
+        try {
+            _dataBase.loadFailed();
+            _dataBase.loadStats();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         _primaryStage = primaryStage;
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("VOXSPELL");
         primaryStage.setScene(new Scene(root, 600, 400));
-        primaryStage.show();
         primaryStage.setResizable(false);
+        primaryStage.show();
     }
 
     @Override
@@ -42,6 +51,7 @@ public class Main extends Application {
     }
 
     public static Stage getPrimaryStage() {
+
         return _primaryStage;
     }
 

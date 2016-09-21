@@ -29,9 +29,9 @@
             </Pane>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Pane layoutX="10.0" layoutY="10.0" onMouseClicked="#goToSpelling" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B8860B;" VBox.vgrow="ALWAYS">
+                  <Pane layoutX="10.0" layoutY="10.0" onMouseClicked="#newSpellingQuizClicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B8860B;" VBox.vgrow="ALWAYS">
                      <children>
-                        <Text fill="WHITE" layoutX="31.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW SPELLING QUIZ" textAlignment="CENTER" wrappingWidth="233.82177734375">
+                        <Text fx:id="button" fill="WHITE" layoutX="31.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW SPELLING QUIZ" textAlignment="CENTER" wrappingWidth="233.82177734375">
                            <font>
                               <Font size="22.0" />
                            </font>
