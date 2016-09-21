@@ -4,6 +4,7 @@ package sample;
  * Created by zihao123yang on 16/09/16.
  */
 
+import javax.xml.crypto.Data;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,19 +18,10 @@ import java.util.*;
 
 public class DataBase {
 
-
-    private File _statsFile = new File(".stats.ser");
-    private File _failedFile = new File("failedStats.ser");
-    private ArrayList<Word> _wordListOld;
-    private ArrayList<Word> _failedList;
-    //private ArrayList<String> _wordList;
-
-
-    private Map<Integer, ArrayList<String>> _wordList;
-
+    private static DataBase instance = null;
 
     public DataBase() {
-        _wordListOld = new ArrayList<Word>();
+        _storedStats = new ArrayList<Word>();
         _failedList = new ArrayList<Word>();
         //_wordList = new ArrayList<String>();
 
@@ -37,9 +29,63 @@ public class DataBase {
             _wordList = new HashMap<Integer, ArrayList<String>>();
             importWordList();
         }
-
-
     }
+
+    public static DataBase getInstance() {
+        if (instance == null) {
+            instance = new DataBase();
+        }
+
+        return instance;
+    }
+
+    private File _statsFile = new File("stats.ser");
+    private File _failedFile = new File("failedStats.ser");
+    private ArrayList<Word> _storedStats;
+    private ArrayList<Word> _failedList;
+    //private ArrayList<String> _wordList;
+
+    private Map<Integer, ArrayList<String>> _wordList;
+
+
+
+    public void save() throws IOException {
+        FileOutputStream fileOut = new FileOutputStream(_statsFile);
+        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+        objectOut.writeObject(_storedStats);
+        fileOut.close();
+        objectOut.close();
+        fileOut = new FileOutputStream(_failedFile);
+        objectOut = new ObjectOutputStream(fileOut);
+        objectOut.writeObject(_failedList);
+        objectOut.close();
+        fileOut.close();
+    }
+
+
+    public void loadStats() throws IOException, ClassNotFoundException {
+        if (!_statsFile.exists()) {
+            return;
+        }
+        FileInputStream fileIn = new FileInputStream(_statsFile);
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+        _storedStats = (ArrayList<Word>) objectIn.readObject();
+        fileIn.close();
+        objectIn.close();
+    }
+
+
+    public void loadFailed() throws IOException, ClassNotFoundException {
+        if (!_failedFile.exists()) {
+            return;
+        }
+        FileInputStream fileIn = new FileInputStream(_failedFile);
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+        _failedList = (ArrayList<Word>) objectIn.readObject();
+        fileIn.close();
+        objectIn.close();
+    }
+
 
     public void importWordList() {
         String currentLine;
@@ -127,55 +173,20 @@ public class DataBase {
 
 
     public void sortList() {
-        Collections.sort(_wordListOld);
+        Collections.sort(_storedStats);
 
     }
 
 
     public void clearStats() {
-        _wordListOld = new ArrayList<Word>();
+        _storedStats = new ArrayList<Word>();
         _failedList = new ArrayList<Word>();
-    }
-
-
-    public void save() throws IOException {
-        FileOutputStream fileOut = new FileOutputStream(_statsFile);
-        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-        objectOut.writeObject(_wordListOld);
-        fileOut.close();
-        objectOut.close();
-        fileOut = new FileOutputStream(_failedFile);
-        objectOut = new ObjectOutputStream(fileOut);
-        objectOut.writeObject(_failedList);
-        objectOut.close();
-        fileOut.close();
-    }
-
-
-    public void loadStats() throws IOException, ClassNotFoundException {
-        if (!_statsFile.exists()) {
-            return;
-        }
-        FileInputStream fileIn = new FileInputStream(_statsFile);
-        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-        _wordListOld = (ArrayList<Word>) objectIn.readObject();
-        fileIn.close();
-        objectIn.close();
-    }
-
-
-    public void loadFailed() throws IOException, ClassNotFoundException {
-        FileInputStream fileIn = new FileInputStream(_failedFile);
-        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-        _failedList = (ArrayList<Word>) objectIn.readObject();
-        fileIn.close();
-        objectIn.close();
     }
 
 
     public void addToWordList(Word word) {
 
-        _wordListOld.add(word);
+        _storedStats.add(word);
     }
 
 
@@ -215,9 +226,42 @@ public class DataBase {
 
     public int sizeOfStats() {
 
-        return _wordListOld.size();
+        return _storedStats.size();
     }
 
-    //fdsfdsfsdf
+    public void printSavedFIles() {
+
+        System.out.println("storedStats:");
+        for (int i = 0; i < _storedStats.size(); i++) {
+            System.out.print(_storedStats.get(i).name() + " ");
+        }
+
+        System.out.println("");
+        System.out.println("failedList:");
+
+        for (int i =0; i < _failedList.size(); i++) {
+            System.out.print(_failedList.get(i).name());
+        }
+
+    }
+
+    public boolean wordSeen(Word word) {
+        if (_storedStats.contains(word)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Word getWordStatsList(Word word) {
+
+
+        if (_storedStats.contains(word)) {
+            int index = _storedStats.indexOf(word);
+            return _storedStats.get(index);
+        } else {
+            return word;
+        }
+    }
 
 }
