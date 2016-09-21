@@ -66,7 +66,7 @@ public class Spelling_Logic {
 
             //festival call
             // "Please spell the word " + _wordList.get(_position) +" . " + _wordList.get(_position)
-            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
+//            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
             System.out.println("Spell word: " + _wordList.get(_position));
             _inputFlag = true;
             return;
@@ -79,8 +79,8 @@ public class Spelling_Logic {
             Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             if (_wordList.get(_position).equals(input)) {
                 // festival call - correct!
-                Festival.callFestival("Correct.");
-                Festival.callFestival("...");
+//                Festival.callFestival("Correct.");
+//                Festival.callFestival("...");
 
                 System.out.println("correct! this");
 
@@ -89,12 +89,10 @@ public class Spelling_Logic {
                 }
 
                 if (_dataBase.wordSeen(word)) {
-                    System.out.println("adding mastered old");
                     word = _dataBase.getWordStatsList(word);
                     word.addMastered();
                 } else {
                     word.addMastered();
-                    System.out.println("adding mastered new");
                     _dataBase.addToWordList(word);
                 }
 
@@ -102,7 +100,7 @@ public class Spelling_Logic {
 
             } else {
 
-                Festival.callFestival("Incorrect! Please try again" + _wordList.get(_position) + "... " + _wordList.get(_position));
+//                Festival.callFestival("Incorrect! Please try again" + _wordList.get(_position) + "... " + _wordList.get(_position));
                 System.out.println("incorrect, try again");
 
                 _repeatFlag = true;
@@ -115,7 +113,7 @@ public class Spelling_Logic {
 
             Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             if (_wordList.get(_position).equals(input)) {
-                Festival.callFestival("Correct...");
+//                Festival.callFestival("Correct...");
                 System.out.println("correct!");
 
                 if (!_isNewQuiz) {
@@ -133,7 +131,7 @@ public class Spelling_Logic {
                 _stats.increaseFaulted();
 
             } else {
-                Festival.callFestival("Incorrect...");
+//                Festival.callFestival("Incorrect...");
                 System.out.println("incorrect");
 
                 if (!_isNewQuiz) {
@@ -158,11 +156,10 @@ public class Spelling_Logic {
         _position++;
 
         if (_position < _numWords ) {
-            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
+//            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
             System.out.println("Spell word: " + _wordList.get(_position));
             return;
         } else {
-            Festival.callFestival("Quiz finished!");
             System.out.println("Quiz finished");
 
             if (_stats.levelPassed()) {

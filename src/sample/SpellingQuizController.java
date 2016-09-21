@@ -29,9 +29,16 @@ public class SpellingQuizController implements Initializable {
     public void userInput() {
 
         String answer = _inputField.getCharacters().toString();
+        _inputField.clear();
 
         _spellingLogic.spellingQuiz(answer);
     }
+
+    @FXML
+    public void textFieldClicked() {
+        _inputField.clear();
+    }
+
 
     @FXML
     public void submitButtonPressed() {

@@ -11,18 +11,9 @@ import java.io.IOException;
 /**
  * Created by zihao123yang on 22/09/16.
  */
-public class LevelFailedController {
-
+public class LevelCompletedController {
 
     @FXML
-    public void retryLevel() throws IOException {
-
-        Stage stage = Main.getPrimaryStage();
-        Parent root = FXMLLoader.load(getClass().getResource("SpellingQuiz.fxml"));
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
-    }
-
     public void returnToMainMenu() throws IOException {
         Stage stage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("sanple.fxml"));
@@ -30,7 +21,20 @@ public class LevelFailedController {
         stage.show();
     }
 
-    public void Statistics() {
+    @FXML
+    public void retryLevel() throws IOException {
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("SpellingQuiz.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
 
+    @FXML
+    public void nextLevel() throws IOException {
+        Level.nextLevel();
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("SpellingQuiz.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
     }
 }
