@@ -42,9 +42,14 @@ public class Spelling_Logic {
         if (newQuiz == true) {
             _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
+
+            _dataBase.randomizefailedList();
+
+            int size = _dataBase.sizeOfFailed();
+
+            if
             // temporary, revision quiz logic not completed- revision quiz for each level?
             _wordList = new ArrayList<String>();
-
         }
 
         System.out.println(_wordList.size());
@@ -146,6 +151,7 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(word);
                 }
 
+                _dataBase.addToFailedList(word);
                 _stats.increaseFailed();
 
 
@@ -162,11 +168,16 @@ public class Spelling_Logic {
         } else {
             System.out.println("Quiz finished");
 
-            if (_stats.levelPassed()) {
-                levelComplete();
+            if (Level.getCurrentlevel() <= 10) {
+                if (_stats.levelPassed()) {
+                    levelComplete();
+                } else {
+                    levelFailed();
+                }
             } else {
-                levelFailed();
+
             }
+
 
         }
 
@@ -200,6 +211,7 @@ public class Spelling_Logic {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
+
 
 
 
