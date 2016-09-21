@@ -17,6 +17,7 @@ public class Spelling_Logic {
     private DataBase _dataBase;
     private ArrayList<String> _wordList;
     private Statistics _stats;
+    private RevisionQuiz _revisionData;
 
     private boolean _isNewQuiz;
     private boolean _inputFlag;
@@ -26,13 +27,10 @@ public class Spelling_Logic {
 
 
 
-
-
     public Spelling_Logic() {
 
         _dataBase = DataBase.getInstance();
     }
-
 
 
     public void setUpQuiz (boolean newQuiz) {
@@ -43,16 +41,29 @@ public class Spelling_Logic {
             _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
 
-            _dataBase.randomizefailedList();
+            ArrayList<Word> preparationList = _revisionData.levelListForRevise();
 
-            int size = _dataBase.sizeOfFailed();
+            if (preparationList == null) {
 
-            if
-            // temporary, revision quiz logic not completed- revision quiz for each level?
-            _wordList = new ArrayList<String>();
+                //go to next scene
+
+            } else if (preparationList.size() < 10) {
+
+                for (int i = 0; i < preparationList.size(); i++) {
+                    _wordList.add(preparationList.get(i).name());
+                }
+
+            } else if (preparationList.size() >= 10) {
+
+                for (int i = 0; i < 10; i++) {
+                    _wordList.add(preparationList.get(i).name());
+                }
+            }
+
         }
 
         System.out.println(_wordList.size());
+
         _numWords = 10;
 
         _position = 0;
@@ -90,7 +101,7 @@ public class Spelling_Logic {
                 System.out.println("correct! this");
 
                 if (!_isNewQuiz) {
-
+                    _revisionData.removeFromLevel(word);
                 }
 
                 if (_dataBase.wordSeen(word)) {
@@ -122,7 +133,7 @@ public class Spelling_Logic {
                 System.out.println("correct!");
 
                 if (!_isNewQuiz) {
-
+                    _revisionData.removeFromLevel(word);
                 }
 
                 if (_dataBase.wordSeen(word)) {
@@ -139,9 +150,6 @@ public class Spelling_Logic {
 //                Festival.callFestival("Incorrect...");
                 System.out.println("incorrect");
 
-                if (!_isNewQuiz) {
-
-                }
 
                 if (_dataBase.wordSeen(word)) {
                     word = _dataBase.getWordStatsList(word);
@@ -151,7 +159,7 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(word);
                 }
 
-                _dataBase.addToFailedList(word);
+                _revisionData.addToFailed(word);
                 _stats.increaseFailed();
 
 
@@ -174,13 +182,8 @@ public class Spelling_Logic {
                 } else {
                     levelFailed();
                 }
-            } else {
-
             }
-
-
         }
-
 
     }
 

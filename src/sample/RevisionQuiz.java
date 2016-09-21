@@ -2,9 +2,7 @@ package sample;
 
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by zihao123yang on 22/09/16.
@@ -37,6 +35,30 @@ public class RevisionQuiz {
     }
 
     public ArrayList<Word> levelListForRevise() {
-        
+
+
+        if (_failedList.containsKey(_level)) {
+
+            ArrayList failedLevel = _failedList.get(_level);
+            long seed = System.nanoTime();
+            Collections.shuffle(failedLevel, new Random(seed));
+
+            return failedLevel;
+        } else {
+            return null;
+        }
     }
+
+    public void removeFromLevel(Word word) {
+
+        ArrayList<Word> levelList = _failedList.get(_level);
+
+        if (levelList.contains(word)) {
+            levelList.remove(word);
+        }
+    }
+
+
+
+
 }

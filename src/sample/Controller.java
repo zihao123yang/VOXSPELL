@@ -32,7 +32,11 @@ public class Controller implements Initializable {
         stage.show();
     }
 
-    public void reviewQuizClicked() {
+    public void reviewQuizClicked() throws IOException {
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("VideoScene.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
 
     }
 
