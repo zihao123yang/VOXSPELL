@@ -11,16 +11,37 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    private DataBase _dataBase = DataBase.getInstance();
+    private static Stage _primaryStage;
+
 
 
     // start method is the entry point for all javafx applications, launch calls start
     @Override
     public void start(Stage primaryStage) throws Exception{
 
+        _primaryStage = primaryStage;
+
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("stage is closing");
+
+        try {
+            _dataBase.save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static Stage getPrimaryStage() {
+        return _primaryStage;
     }
 
 
