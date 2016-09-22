@@ -1,17 +1,21 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 /**
@@ -19,8 +23,6 @@ import java.util.ResourceBundle;
  * Controls the logic for the scene after the 'New Quiz button' or 'Review  Quiz button' is selected
  */
 public class SelectQuizSettingsController implements Initializable {
-
-    final ToggleGroup group = new ToggleGroup();
 
     @FXML
     ToggleButton level1;
@@ -53,10 +55,13 @@ public class SelectQuizSettingsController implements Initializable {
     ToggleButton level10;
 
     @FXML
+    private ComboBox voiceChoiceBox;
+
+    ObservableList<String> voiceList = FXCollections.observableArrayList("voice_kal_diphone", "voice_akl_nz_jdt_diphone");
+
+    @FXML
     public void level1Pressed(ActionEvent event) {
         Level.setLevel(1);
-        //AbstractButton abstractButton = (AbstractButton) event.getSource();
-
     }
 
     @FXML
@@ -113,14 +118,24 @@ public class SelectQuizSettingsController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    public void returnToMainMenu() throws IOException {
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+
+    @FXML
+    public void voiceChanging() {
+        if (voiceChoiceBox.getValue().equals)
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        level1 = new ToggleButton();
-        level1.setToggleGroup(group);
 
-        level2 = new ToggleButton();
-        level2.setToggleGroup(group);
+        voiceChoiceBox.setValue("voice_kal_diphone");
+        voiceChoiceBox.setItems(voiceList);
 
     }
 }

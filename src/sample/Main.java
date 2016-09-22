@@ -62,5 +62,7 @@ public class Main extends Application {
 
         launch(args);
 
+        //Festival.callFestival2("hello, my love");
+
     }
 }
