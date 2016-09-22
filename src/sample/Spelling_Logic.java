@@ -37,9 +37,14 @@ public class Spelling_Logic {
         _inputFlag = false;
         _repeatFlag = false;
 
+
+
+
         if (newQuiz == true) {
+            _isNewQuiz = true;
             _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
+            _isNewQuiz = false;
 
             ArrayList<Word> preparationList = _revisionData.levelListForRevise();
 

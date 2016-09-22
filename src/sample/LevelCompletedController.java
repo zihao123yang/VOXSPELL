@@ -23,7 +23,7 @@ public class LevelCompletedController implements Initializable{
     @FXML
     public void returnToMainMenu() throws IOException {
         Stage stage = Main.getPrimaryStage();
-        Parent root = FXMLLoader.load(getClass().getResource("sanple.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
@@ -41,6 +41,15 @@ public class LevelCompletedController implements Initializable{
         Level.nextLevel();
         Stage stage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("SpellingQuiz.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+
+    @FXML
+    public void playVideo() throws IOException {
+        Level.nextLevel();
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("VideoScene.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }

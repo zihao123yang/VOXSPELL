@@ -2,13 +2,19 @@ package sample;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +30,34 @@ public class VideoSceneController implements Initializable {
     private MediaPlayer mediaPlayer;
 
     private Media media;
+
+
+    public void playButtonPressed(ActionEvent event) {
+        mediaPlayer.play();
+    }
+
+    public void pauseButtonPressed(ActionEvent event) {
+        mediaPlayer.pause();
+    }
+
+    public void stopButtonPressed(ActionEvent event) throws IOException {
+        mediaPlayer.stop();
+
+        Level.nextLevel();
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("LevelComplete.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+
+    public void muteButtonPressed(ActionEvent event) {
+        //mediaPlayer.mute();
+    }
+
+
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -12,12 +12,12 @@
       <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="106.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="25.0" layoutY="150.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Button" />
-            <Button layoutX="135.0" layoutY="150.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Button" />
-            <Button layoutX="478.0" layoutY="110.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="345.0" layoutY="151.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Button" />
+            <Button layoutX="20.0" layoutY="50.0" mnemonicParsing="false" onAction="#playButtonPressed" prefHeight="35.0" prefWidth="130.0" text="Play" />
+            <Button layoutX="165.0" layoutY="50.0" mnemonicParsing="false" onAction="#pauseButtonPressed" prefHeight="35.0" prefWidth="130.0" text="pause" />
+            <Button layoutX="455.0" layoutY="50.0" mnemonicParsing="false" onAction="#muteButtonPressed" prefHeight="35.0" prefWidth="130.0" text="mute" />
+            <Button layoutX="310.0" layoutY="50.0" mnemonicParsing="false" onAction="#stopButtonPressed" prefHeight="35.0" prefWidth="130.0" text="Stop" />
          </children>
       </Pane>
    </bottom>
