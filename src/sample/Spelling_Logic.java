@@ -100,7 +100,7 @@ public class Spelling_Logic {
         if (_repeatFlag == false) {
 
             Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
-            if (_wordList.get(_position).toLowerCase().equals(input.toLowerCase())) {
+            if (_wordList.get(_position).toLowerCase().trim().equals(input.toLowerCase().trim())) {
 
                 Festival.callFestival("Correct, well done");
 
@@ -134,7 +134,7 @@ public class Spelling_Logic {
         if (_repeatFlag == true) {
 
             Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
-            if (_wordList.get(_position).toLowerCase().equals(input.toLowerCase())) {
+            if (_wordList.get(_position).toLowerCase().trim().equals(input.toLowerCase().trim())) {
                 Festival.callFestival("Correct");
                 System.out.println("correct!");
 

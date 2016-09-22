@@ -110,7 +110,11 @@ public class RevisionQuiz {
     public boolean checkAnyWords(int level) {
 
         if (_failedList.containsKey(level)) {
-            return true;
+            if(_failedList.get(level).size() > 0) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

@@ -169,8 +169,8 @@ public class RevisionSettingsController implements Initializable {
         for (int i = 0; i < 10; i++) {
             boolean levelExists = _revisionQUiz.checkAnyWords(i + 1);
 
-            if (!levelExists) {
-                myButtons.get(i).setDisable(true);
+            if (!_revisionQUiz.checkAnyWords(i + 1)) {
+                    myButtons.get(i).setDisable(true);
             } else {
                 continueButton.setDisable(false);
             }
