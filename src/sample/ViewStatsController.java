@@ -1,10 +1,15 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,51 +72,111 @@ public class ViewStatsController implements Initializable {
 
     @FXML
     public void level1Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(1));
+        String outputText = _statistics.printStatistics(1);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 1");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(1));
+        }
     }
 
     @FXML
     public void level2Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(2));
+        String outputText = _statistics.printStatistics(2);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 2");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(2));
+        }
     }
 
     @FXML
     public void level3Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(3));
+        String outputText = _statistics.printStatistics(3);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 3");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(3));
+        }
     }
 
     @FXML
     public void level4Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(4));
+        String outputText = _statistics.printStatistics(4);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 4");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(4));
+        }
     }
 
     @FXML
     public void level5Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(5));
+        String outputText = _statistics.printStatistics(5);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 5");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(5));
+        }
     }
 
     @FXML
     public void level6Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(6));
+        String outputText = _statistics.printStatistics(6);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 6");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(6));
+        }
     }
 
     @FXML
     public void level7Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(7));
+        String outputText = _statistics.printStatistics(7);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 7");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(7));
+        }
     }
 
     @FXML
     public void level8Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(8));
+        String outputText = _statistics.printStatistics(8);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 8");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(8));
+        }
     }
 
     @FXML
     public void level9Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(9));
+        String outputText = _statistics.printStatistics(9);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 9");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(9));
+        }
     }
 
     @FXML
     public void level10Pressed(){
-        statsDisplay.setText(_statistics.printStatistics(10));
+        String outputText = _statistics.printStatistics(10);
+        if(outputText.equals("")){
+            statsDisplay.setText("No stats to display for level 10");
+        } else {
+            statsDisplay.setText(_statistics.printStatistics(10));
+        }
+    }
+
+
+
+    @FXML
+    public void returnToMainMenu() throws IOException{
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
     }
 }

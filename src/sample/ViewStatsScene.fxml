@@ -8,9 +8,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ViewStatsController">
     <children>
-        <VBox layoutX="279.0" layoutY="47.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
+        <VBox layoutX="279.0" layoutY="47.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #317873;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
             <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW STATISTICS" textAlignment="CENTER" wrappingWidth="600.27880859375">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW STATISTICS" textAlignment="CENTER" wrappingWidth="601.27880859375">
                     <font>
                         <Font name="Loma" size="25.0" />
                     </font>
@@ -19,7 +19,7 @@
                     <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                             <children>
-                                <GridPane alignment="CENTER" layoutX="-2.0" layoutY="4.0" prefHeight="360.0" prefWidth="174.0">
+                                <GridPane alignment="CENTER" layoutX="-2.0" layoutY="4.0" prefHeight="360.0" prefWidth="174.0" style="-fx-background-color: #0077BE;">
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     </columnConstraints>
@@ -37,7 +37,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LEVEL: " textAlignment="CENTER" wrappingWidth="177.7294921875">
+                                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="LEVEL: " textAlignment="CENTER" wrappingWidth="177.7294921875">
                                             <font>
                                                 <Font name="Loma" size="13.0" />
                                             </font>
@@ -101,14 +101,14 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                             <children>
-                                <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="358.0" prefWidth="416.0">
+                                <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="358.0" prefWidth="416.0" style="-fx-background-color: #0077BE;">
                                     <children>
                                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
                                             <content>
-                                                <TextArea fx:id="statsDisplay" prefHeight="191.0" prefWidth="410.0" />
+                                                <TextArea fx:id="statsDisplay" prefHeight="191.0" prefWidth="410.0" style="-fx-background-color: #40826D;" />
                                             </content>
                                         </ScrollPane>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PIE CHART 2 GO HERE" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   PIE CHART 2 GO HERE" />
                                     </children>
                                 </VBox>
                             </children>
@@ -117,5 +117,6 @@
                 </SplitPane>
             </children>
         </VBox>
+      <Button mnemonicParsing="false" onMouseClicked="#returnToMainMenu" text="Main Menu" />
     </children>
 </AnchorPane>
