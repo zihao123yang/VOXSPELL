@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.org.apache.regexp.internal.RE;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -67,7 +66,7 @@ public class RevisionSettingsController implements Initializable {
     ToggleButton level10;
 
     @FXML
-    private ComboBox voiceChoiceBox;
+    private ComboBox selectVoice;
 
     ObservableList<String> voiceList = FXCollections.observableArrayList("voice_kal_diphone", "voice_akl_nz_jdt_diphone");
 
@@ -148,10 +147,10 @@ public class RevisionSettingsController implements Initializable {
 
     @FXML
     public void voiceChanging() {
-        if (voiceChoiceBox.getValue().equals("voice_kal_diphone")) {
-            Festival.setVoice("(voice_kal_diphone)");
-        } else if (voiceChoiceBox.getValue().equals("voice_akl_nz_jdt_diphone")) {
-            Festival.setVoice("(voice_akl_nz_jdt_diphone)");
+        if (selectVoice.getValue().equals("voice_kal_diphone")) {
+            Festival.setVoice("voice_kal_diphone");
+        } else if (selectVoice.getValue().equals("voice_akl_nz_jdt_diphone")) {
+            Festival.setVoice("voice_akl_nz_jdt_diphone");
         }
     }
 
@@ -159,8 +158,8 @@ public class RevisionSettingsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         addButtons();
 
-        voiceChoiceBox.setValue("voice_kal_diphone");
-        voiceChoiceBox.setItems(voiceList);
+        selectVoice.setValue(Festival.voice());
+        selectVoice.setItems(voiceList);
 
 
         continueButton.setDisable(true);
@@ -169,8 +168,8 @@ public class RevisionSettingsController implements Initializable {
         for (int i = 0; i < 10; i++) {
             boolean levelExists = _revisionQUiz.checkAnyWords(i + 1);
 
-            if (!levelExists) {
-                myButtons.get(i).setDisable(true);
+            if (!_revisionQUiz.checkAnyWords(i + 1)) {
+                    myButtons.get(i).setDisable(true);
             } else {
                 continueButton.setDisable(false);
             }

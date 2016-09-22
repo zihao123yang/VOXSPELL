@@ -9,7 +9,6 @@ public class Level {
     private static int _currentLevel = 0;
 
     public static void setLevel(int level) {
-
         _currentLevel = level;
     }
 
@@ -20,7 +19,9 @@ public class Level {
 
     public static void setUnlockedlevel(int level) {
 
-        _levelUnlocked = level;
+        if (level > _levelUnlocked) {
+            _levelUnlocked = level;
+        }
     }
 
     public static int getUnlockedlevel() {
@@ -36,8 +37,12 @@ public class Level {
     }
 
     public static void nextLevel() {
+
+        if (_currentLevel == _levelUnlocked) {
+            _levelUnlocked++;
+        }
         _currentLevel++;
-        _levelUnlocked++;
+
     }
 
 

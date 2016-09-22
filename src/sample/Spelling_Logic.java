@@ -24,6 +24,7 @@ public class Spelling_Logic {
     private boolean _repeatFlag;
     private int _position;
     private int _numWords;
+    private Word _word;
 
 
 
@@ -40,14 +41,11 @@ public class Spelling_Logic {
         _repeatFlag = false;
 
 
-
-
         if (_isNewQuiz == true) {
 
             _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
 
-            System.out.println("im coming in...");
             ArrayList<Word> preparationList = _revisionData.levelListForRevise();
 
             if (preparationList == null) {
@@ -86,9 +84,8 @@ public class Spelling_Logic {
 
         if (_inputFlag == false) {
 
+            _word = new Word(_wordList.get(_position),Level.getCurrentlevel());
 
-            //festival call
-            // "Please spell the word " + _wordList.get(_position) +" . " + _wordList.get(_position)
             Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
             System.out.println("Spell word: " + _wordList.get(_position));
             _inputFlag = true;
@@ -99,30 +96,30 @@ public class Spelling_Logic {
 
         if (_repeatFlag == false) {
 
-            Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
-            if (_wordList.get(_position).toLowerCase().equals(input.toLowerCase())) {
+            _word = new Word(_wordList.get(_position), Level.getCurrentlevel());
+            if (_wordList.get(_position).toLowerCase().trim().equals(input.toLowerCase().trim())) {
 
                 Festival.callFestival("Correct, well done");
 
                 System.out.println("correct! hello");
 
                 if (!_isNewQuiz) {
-                    _revisionData.removeFromLevel(word);
+                    _revisionData.removeFromLevel(_word);
                 }
 
-                if (_dataBase.wordSeen(word)) {
-                    word = _dataBase.getWordStatsList(word);
-                    word.addMastered();
+                if (_dataBase.wordSeen(_word)) {
+                    _word = _dataBase.getWordStatsList(_word);
+                    _word.addMastered();
                 } else {
-                    word.addMastered();
-                    _dataBase.addToWordList(word);
+                    _word.addMastered();
+                    _dataBase.addToWordList(_word);
                 }
 
                 _stats.increaseMastered();
 
             } else {
 
-                Festival.callFestival("Incorrect! Please try again" + _wordList.get(_position) + "... " + _wordList.get(_position));
+                Festival.callFestival("Incorrect! Please try again. " + _wordList.get(_position) + "... " + _wordList.get(_position));
                 System.out.println("incorrect, try again");
 
                 _repeatFlag = true;
@@ -133,21 +130,21 @@ public class Spelling_Logic {
 
         if (_repeatFlag == true) {
 
-            Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
-            if (_wordList.get(_position).toLowerCase().equals(input.toLowerCase())) {
+            _word = new Word(_wordList.get(_position), Level.getCurrentlevel());
+            if (_wordList.get(_position).toLowerCase().trim().equals(input.toLowerCase().trim())) {
                 Festival.callFestival("Correct");
                 System.out.println("correct!");
 
                 if (!_isNewQuiz) {
-                    _revisionData.removeFromLevel(word);
+                    _revisionData.removeFromLevel(_word);
                 }
 
-                if (_dataBase.wordSeen(word)) {
-                    word = _dataBase.getWordStatsList(word);
-                    word.addFaulted();
+                if (_dataBase.wordSeen(_word)) {
+                    _word = _dataBase.getWordStatsList(_word);
+                    _word.addFaulted();
                 } else {
-                    word.addFaulted();
-                    _dataBase.addToWordList(word);
+                    _word.addFaulted();
+                    _dataBase.addToWordList(_word);
                 }
 
                 _stats.increaseFaulted();
@@ -157,14 +154,15 @@ public class Spelling_Logic {
                 System.out.println("incorrect");
 
 
-                _revisionData.addToFailed(word);
 
-                if (_dataBase.wordSeen(word)) {
-                    word = _dataBase.getWordStatsList(word);
-                    word.addFailed();
+                _revisionData.addToFailed(_word);
+
+                if (_dataBase.wordSeen(_word)) {
+                    _word = _dataBase.getWordStatsList(_word);
+                    _word.addFailed();
                 } else {
-                    word.addFailed();
-                    _dataBase.addToWordList(word);
+                    _word.addFailed();
+                    _dataBase.addToWordList(_word);
                 }
 
                // _revisionData.addToFailed(word);
@@ -179,6 +177,7 @@ public class Spelling_Logic {
 
         System.out.println("position: " + _position + "    numwords: " + _numWords);
         if (_position < _numWords ) {
+            _word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
             System.out.println("Spell word: " + _wordList.get(_position));
             return;
@@ -194,6 +193,26 @@ public class Spelling_Logic {
             }
         }
 
+    }
+
+    public String currentWord() {
+        return _word.name();
+    }
+
+    public int whichIteration() {
+        if (_repeatFlag) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+
+    public boolean spellingCorrect(String input) {
+        if (_wordList.get(_position).toLowerCase().trim().equals(input.toLowerCase().trim())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void levelComplete()  {
@@ -225,14 +244,5 @@ public class Spelling_Logic {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
-
-
-
-
-
-
-
-
-
 
 }

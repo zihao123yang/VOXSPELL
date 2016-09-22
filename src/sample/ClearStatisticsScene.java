@@ -50,7 +50,7 @@ public class ClearStatisticsScene implements Initializable{
         yesLabel.setVisible(true);
 
         _db.clearStats();
-        //_rv.clearFailed();
+        _rv.clearFailed();
 
         yesButton.setVisible(false);
         noButton.setVisible(false);
