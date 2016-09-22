@@ -65,42 +65,42 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#level3Pressed" prefHeight="25.0" prefWidth="58.0" text="3" toggleGroup="$toggleGroup" GridPane.columnIndex="3">
+            <ToggleButton fx:id="level3" mnemonicParsing="false" onAction="#level3Pressed" prefHeight="25.0" prefWidth="58.0" text="3" toggleGroup="$toggleGroup" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#level4Pressed" prefHeight="25.0" prefWidth="74.0" text="4" toggleGroup="$toggleGroup" GridPane.columnIndex="4">
+            <ToggleButton fx:id="level4" mnemonicParsing="false" onAction="#level4Pressed" prefHeight="25.0" prefWidth="74.0" text="4" toggleGroup="$toggleGroup" GridPane.columnIndex="4">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#level5Pressed" prefHeight="25.0" prefWidth="104.0" text="5" toggleGroup="$toggleGroup" GridPane.columnIndex="5">
+            <ToggleButton fx:id="level5" mnemonicParsing="false" onAction="#level5Pressed" prefHeight="25.0" prefWidth="104.0" text="5" toggleGroup="$toggleGroup" GridPane.columnIndex="5">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#level6Pressed" prefHeight="25.0" prefWidth="82.0" text="6" toggleGroup="$toggleGroup" GridPane.columnIndex="6">
+            <ToggleButton fx:id="level6" mnemonicParsing="false" onAction="#level6Pressed" prefHeight="25.0" prefWidth="82.0" text="6" toggleGroup="$toggleGroup" GridPane.columnIndex="6">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#level7Pressed" prefHeight="25.0" prefWidth="83.0" text="7" toggleGroup="$toggleGroup" GridPane.columnIndex="7">
+            <ToggleButton fx:id="level7" mnemonicParsing="false" onAction="#level7Pressed" prefHeight="25.0" prefWidth="83.0" text="7" toggleGroup="$toggleGroup" GridPane.columnIndex="7">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#level8Pressed" prefHeight="25.0" prefWidth="82.0" text="8" toggleGroup="$toggleGroup" GridPane.columnIndex="8">
+            <ToggleButton fx:id="level8" mnemonicParsing="false" onAction="#level8Pressed" prefHeight="25.0" prefWidth="82.0" text="8" toggleGroup="$toggleGroup" GridPane.columnIndex="8">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#level9Pressed" prefHeight="25.0" prefWidth="85.0" text="9" toggleGroup="$toggleGroup" GridPane.columnIndex="9">
+            <ToggleButton fx:id="level9" mnemonicParsing="false" onAction="#level9Pressed" prefHeight="25.0" prefWidth="85.0" text="9" toggleGroup="$toggleGroup" GridPane.columnIndex="9">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#level10Pressed" prefHeight="25.0" prefWidth="82.0" text="10" toggleGroup="$toggleGroup" GridPane.columnIndex="10">
+            <ToggleButton fx:id="level10" mnemonicParsing="false" onAction="#level10Pressed" prefHeight="25.0" prefWidth="82.0" text="10" toggleGroup="$toggleGroup" GridPane.columnIndex="10">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>

@@ -51,17 +51,19 @@ public class DataBase {
 
 
 
-    public void save() throws IOException {
+    public void saveStats() throws IOException {
         FileOutputStream fileOut = new FileOutputStream(_statsFile);
         ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
         objectOut.writeObject(_storedStats);
         fileOut.close();
         objectOut.close();
+        /*
         fileOut = new FileOutputStream(_failedFile);
         objectOut = new ObjectOutputStream(fileOut);
         objectOut.writeObject(_failedList);
         objectOut.close();
         fileOut.close();
+        */
     }
 
 
