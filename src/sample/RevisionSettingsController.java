@@ -133,6 +133,8 @@ public class RevisionSettingsController implements Initializable {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
 
+        Spelling_Logic._isNewQuiz = false;
+
 
     }
 

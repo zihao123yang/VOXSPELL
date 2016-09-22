@@ -73,7 +73,6 @@ public class RevisionQuiz {
 
     public ArrayList<Word> levelListForRevise() {
 
-
         if (_failedList.containsKey(Level.getCurrentlevel())) {
 
             ArrayList failedLevel = _failedList.get(Level.getCurrentlevel());
