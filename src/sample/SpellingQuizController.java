@@ -58,7 +58,8 @@ public class SpellingQuizController implements Initializable {
         _spellingLogic.setUpQuiz(true);
         _spellingLogic.spellingQuiz("");
 
-        System.out.println(Level.getCurrentlevel());
+
+
     }
 
 

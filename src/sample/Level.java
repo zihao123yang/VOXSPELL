@@ -5,7 +5,8 @@ package sample;
  */
 public class Level {
 
-    private static int _currentLevel;
+    private static int _levelUnlocked = 0;
+    private static int _currentLevel = 0;
 
     public static void setLevel(int level) {
 
@@ -17,7 +18,27 @@ public class Level {
         return _currentLevel;
     }
 
+    public static void setUnlockedlevel(int level) {
+
+        _levelUnlocked = level;
+    }
+
+    public static int getUnlockedlevel() {
+
+        return _levelUnlocked;
+    }
+
+    public static void nextlevelUnlocked() {
+
+        if (_levelUnlocked < 10) {
+            _levelUnlocked++;
+        }
+    }
+
     public static void nextLevel() {
         _currentLevel++;
+        _levelUnlocked++;
     }
+
+
 }

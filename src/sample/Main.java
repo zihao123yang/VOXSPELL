@@ -14,6 +14,8 @@ public class Main extends Application {
     private DataBase _dataBase = DataBase.getInstance();
     private static Stage _primaryStage;
 
+    private RevisionQuiz _revisionData = RevisionQuiz.getInstance();
+
 
 
     // start method is the entry point for all javafx applications, launch calls start
@@ -21,7 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         try {
-            _dataBase.loadFailed();
+            _revisionData.loadFailed();
             _dataBase.loadStats();
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,7 +45,8 @@ public class Main extends Application {
         System.out.println("stage is closing");
 
         try {
-            _dataBase.save();
+            _dataBase.saveStats();
+            _revisionData.saveFailed();
         } catch (IOException e) {
             e.printStackTrace();
         }

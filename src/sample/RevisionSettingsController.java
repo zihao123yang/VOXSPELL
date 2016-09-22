@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.org.apache.regexp.internal.RE;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,24 +11,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 /**
- * Created by eli on 21/09/16.
- * Controls the logic for the scene after the 'New Quiz button' or 'Review  Quiz button' is selected
+ * Created by zihao123yang on 22/09/16.
  */
-public class SelectQuizSettingsController implements Initializable {
-
+public class RevisionSettingsController implements Initializable {
 
     ArrayList<ToggleButton> myButtons = new ArrayList<ToggleButton>();
+
+    RevisionQuiz _revisionQUiz = RevisionQuiz.getInstance();
 
     public void addButtons() {
         myButtons.addAll(Arrays.asList(level1, level2, level3, level4,level5, level6, level7, level8,level9,level10));
@@ -70,6 +69,7 @@ public class SelectQuizSettingsController implements Initializable {
 
     @FXML
     public void level1Pressed(ActionEvent event) {
+
         Level.setLevel(1);
         Level.setUnlockedlevel(1);
     }
@@ -168,13 +168,16 @@ public class SelectQuizSettingsController implements Initializable {
         voiceChoiceBox.setItems(voiceList);
 
 
-        if (Level.getUnlockedlevel() != 0) {
-            for (int i = 0; i < 10; i++) {
-                if (i + 1 > Level.getUnlockedlevel()) {
-                    myButtons.get(i).setDisable(true);
-                }
+
+        for (int i = 0; i < 10; i++) {
+            boolean levelExists = _revisionQUiz.checkAnyWords(i);
+
+            if (!levelExists) {
+                myButtons.get(i - 1).setDisable(true);
             }
         }
+
+
 
     }
 }

@@ -30,7 +30,7 @@ public class Spelling_Logic {
     public Spelling_Logic() {
 
         _dataBase = DataBase.getInstance();
-        _revisionData = new RevisionQuiz();
+        _revisionData = RevisionQuiz.getInstance();
     }
 
 
@@ -201,6 +201,8 @@ public class Spelling_Logic {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Level.nextlevelUnlocked();
 
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
