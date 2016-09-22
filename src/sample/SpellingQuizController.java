@@ -56,7 +56,26 @@ public class SpellingQuizController implements Initializable {
        String userInput = _inputField.getText();
         _inputField.clear();
 
+        int iteration = _spellingLogic.whichIteration();
+
+        if(iteration == 1) {        // mastered, ...
+            if (_spellingLogic.spellingCorrect(userInput)) {
+                //-------------------------------------------------------------------
+            } else {
+                //----------------------------------------
+            }
+
+        } else if (iteration == 2) {    //faulted, failed
+            if (_spellingLogic.spellingCorrect(userInput)) {
+                //-----------------------------------------------------------
+            } else {
+                //-----------------------------------------------
+            }
+        }
+
         _spellingLogic.spellingQuiz(userInput);
+
+
 
     }
 

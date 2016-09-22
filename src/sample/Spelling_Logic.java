@@ -199,6 +199,22 @@ public class Spelling_Logic {
         return _word.name();
     }
 
+    public int whichIteration() {
+        if (_repeatFlag) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+
+    public boolean spellingCorrect(String input) {
+        if (_wordList.get(_position).toLowerCase().trim().equals(input.toLowerCase().trim())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void levelComplete()  {
         Stage stage = Main.getPrimaryStage();
         Parent root = null;
