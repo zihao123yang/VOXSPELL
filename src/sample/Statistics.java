@@ -14,13 +14,12 @@ public class Statistics {
     int _wordsTested;
     DataBase _db;
 
-    public Statistics(int numWords, DataBase db) {
+    public Statistics(int numWords) {
         _numWords = numWords;
         _mastered = 0;
         _faulted = 0;
         _failed = 0;
         _wordsTested = 0;
-        _db = db;
     }
 
     public void increaseMastered() {
@@ -48,6 +47,5 @@ public class Statistics {
         } else {
             return false;
         }
-
     }
 }

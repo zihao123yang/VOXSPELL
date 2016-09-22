@@ -10,23 +10,18 @@ import java.util.*;
  */
 public class RevisionQuiz {
 
+
+
     private File _failedFile = new File("failedStats.ser");
     private Map<Integer, ArrayList<Word>> _failedList;
-    private int _level;
 
     private static RevisionQuiz instance = null;
-
 
 
     private RevisionQuiz() {
 
         _failedList = new HashMap<Integer, ArrayList<Word>>();
-        _level = Level.getCurrentlevel();
 
-        if (_failedList == null) {
-            _failedList = new HashMap<Integer, ArrayList<Word>>();
-
-        }
     }
 
     public static RevisionQuiz getInstance() {
@@ -61,18 +56,17 @@ public class RevisionQuiz {
     }
 
 
-
     public void addToFailed(Word word) {
 
-        if (_failedList.containsKey(_level)) {
-            ArrayList<Word> failedLevelList = _failedList.get(_level);
+        if (_failedList.containsKey(Level.getCurrentlevel())) {
+            ArrayList<Word> failedLevelList = _failedList.get(Level.getCurrentlevel());
             if (!failedLevelList.contains(word)) {
                 failedLevelList.add(word);
             }
         } else {
             ArrayList<Word> failedLevelList = new ArrayList<Word>();
             failedLevelList.add(word);
-            _failedList.put(_level, failedLevelList);
+            _failedList.put(Level.getCurrentlevel(), failedLevelList);
         }
 
     }
@@ -80,9 +74,9 @@ public class RevisionQuiz {
     public ArrayList<Word> levelListForRevise() {
 
 
-        if (_failedList.containsKey(_level)) {
+        if (_failedList.containsKey(Level.getCurrentlevel())) {
 
-            ArrayList failedLevel = _failedList.get(_level);
+            ArrayList failedLevel = _failedList.get(Level.getCurrentlevel());
             long seed = System.nanoTime();
             Collections.shuffle(failedLevel, new Random(seed));
 
@@ -94,14 +88,23 @@ public class RevisionQuiz {
 
     public void removeFromLevel(Word word) {
 
-        ArrayList<Word> levelList = _failedList.get(_level);
+        ArrayList<Word> levelList = _failedList.get(Level.getCurrentlevel());
 
         if (levelList.contains(word)) {
             levelList.remove(word);
         }
     }
 
-    public void printfailed() {
+    public void printfailed2() {
+        if (_failedList.containsKey(2)) {
+            ArrayList<Word> list = _failedList.get(2);
+
+            for (int i = 1; i < list.size(); i++) {
+                System.out.print(list.get(i).name());
+            }
+        }
+
+
 
     }
 
@@ -112,6 +115,10 @@ public class RevisionQuiz {
         } else {
             return false;
         }
+    }
+
+    public void clearFailed() {
+        _failedList = new HashMap<Integer,ArrayList<Word>>();
     }
 
 

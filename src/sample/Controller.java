@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private DataBase _dataBase = DataBase.getInstance();
+    private RevisionQuiz _revisionData = RevisionQuiz.getInstance();
 
 
     @FXML
@@ -38,6 +39,10 @@ public class Controller implements Initializable {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
 
+
+
+        _revisionData.printfailed2();
+
     }
 
     public void viewStatisticsClicked() {
@@ -46,6 +51,8 @@ public class Controller implements Initializable {
 
     public void clearStatisticsClicked() {
         _dataBase.clearStats();
+        _revisionData.clearFailed();
+
     }
 
 
