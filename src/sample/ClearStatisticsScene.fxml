@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Text layoutX="136.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLEAR STATISTICS?" textAlignment="CENTER">
+               <font>
+                  <Font name="Loma" size="32.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Button layoutX="125.0" layoutY="59.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="115.0" text="YES" />
+            <Button layoutX="354.0" layoutY="59.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="115.0" text="NO" />
+            <Label fx:id="noLabel" layoutX="132.0" layoutY="147.0" style="-fx-text-fill: #933D41;" text="NO STATS DELETED. RETURNING TO MAIN MENU. . ." />
+            <Label fx:id="yesLabel" layoutX="128.0" layoutY="147.0" style="-fx-text-fill: #317873;" text="ALL STATS DELETED. RETURNING TO MAIN MENU. . ." />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
