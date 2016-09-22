@@ -40,7 +40,11 @@ public class Controller implements Initializable {
 
     }
 
-    public void viewStatisticsClicked() {
+    public void viewStatisticsClicked() throws IOException {
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("ViewStatsScene.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
 
     }
 

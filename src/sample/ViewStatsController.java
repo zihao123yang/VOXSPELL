@@ -50,13 +50,15 @@ public class ViewStatsController implements Initializable {
 
     ArrayList<Button> levelButtons = new ArrayList<Button>();
 
-    Statistics _statistics;
+    DisplayingStats _statistics = new DisplayingStats();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        statsDisplay.setText(_statistics.printStatistics(1));
+
         addButtons();
+        statsDisplay.setText(_statistics.printStatistics(1));
+
     }
 
     public void addButtons(){

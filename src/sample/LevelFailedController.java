@@ -31,7 +31,7 @@ public class LevelFailedController implements Initializable {
 
     public void returnToMainMenu() throws IOException {
         Stage stage = Main.getPrimaryStage();
-        Parent root = FXMLLoader.load(getClass().getResource("sam ple.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }

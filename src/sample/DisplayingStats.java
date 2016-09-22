@@ -5,6 +5,8 @@ package sample;
  */
 public class DisplayingStats {
 
+    DataBase _db = DataBase.getInstance();
+
     /**
      * returns a string representation of the users stats, to be displayed in the view stats scene.
      * @param levelToDisplay
