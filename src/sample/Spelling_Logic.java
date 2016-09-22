@@ -26,10 +26,6 @@ public class Spelling_Logic {
     private int _numWords;
 
 
-    public void setIsNewQuiz(boolean newQuiz) {
-        _isNewQuiz = newQuiz;
-    }
-
 
     public Spelling_Logic() {
 
@@ -51,6 +47,7 @@ public class Spelling_Logic {
             _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
 
+            System.out.println("im coming in...");
             ArrayList<Word> preparationList = _revisionData.levelListForRevise();
 
             if (preparationList == null) {
@@ -74,7 +71,7 @@ public class Spelling_Logic {
 
         System.out.println(_wordList.size());
 
-        _numWords = -_wordList.size();
+        _numWords = _wordList.size();
 
         _position = 0;
 
@@ -85,7 +82,7 @@ public class Spelling_Logic {
 
     public void spellingQuiz(String input) {
 
-        // this is only for debug purpose, GUI hasnt been implemented yet
+        // this is only for debug purpose, GUI hasn't been implemented yet
 
         if (_inputFlag == false) {
 
@@ -180,6 +177,7 @@ public class Spelling_Logic {
         _repeatFlag = false;
         _position++;
 
+        System.out.println("position: " + _position + "    numwords: " + _numWords);
         if (_position < _numWords ) {
             Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
             System.out.println("Spell word: " + _wordList.get(_position));

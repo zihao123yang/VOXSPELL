@@ -150,13 +150,13 @@ public class SelectQuizSettingsController implements Initializable {
     @FXML
     public void continueToQuiz() throws IOException {
 
+        Level.setUnlockedlevel(_levelUnlocked);
+        Spelling_Logic._isNewQuiz = true;
+
         Stage stage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("SpellingQuiz.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
-
-        Level.setUnlockedlevel(_levelUnlocked);
-        Spelling_Logic._isNewQuiz = true;
 
 
     }

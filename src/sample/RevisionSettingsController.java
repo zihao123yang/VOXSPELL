@@ -128,12 +128,12 @@ public class RevisionSettingsController implements Initializable {
     @FXML
     public void continueToQuiz() throws IOException {
 
+        Spelling_Logic._isNewQuiz = false;
+
         Stage stage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("SpellingQuiz.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
-
-        Spelling_Logic._isNewQuiz = false;
 
 
     }
