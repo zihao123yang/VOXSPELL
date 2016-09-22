@@ -104,6 +104,6 @@
         </GridPane>
         <Button fx:id="continueButton" layoutX="415.0" layoutY="337.0" mnemonicParsing="false" onAction="#continueToQuiz" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #4CBB17;" text="Continue . . ." />
         <Button layoutX="25.0" layoutY="337.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="44.0" prefWidth="166.0" text="Return to main menu" />
-        <ComboBox fx:id="voiceChoiceBox" layoutX="209.0" layoutY="174.0" onAction="#voiceChanging" prefHeight="25.0" prefWidth="194.0" />
+        <ComboBox fx:id="selectVoice" layoutX="209.0" layoutY="174.0" onAction="#voiceChanging" prefHeight="25.0" prefWidth="194.0" />
     </children>
 </Pane>

@@ -47,7 +47,6 @@ public class Spelling_Logic {
             _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
 
-            System.out.println("im coming in...");
             ArrayList<Word> preparationList = _revisionData.levelListForRevise();
 
             if (preparationList == null) {
@@ -122,7 +121,7 @@ public class Spelling_Logic {
 
             } else {
 
-                Festival.callFestival("Incorrect! Please try again" + _wordList.get(_position) + "... " + _wordList.get(_position));
+                Festival.callFestival("Incorrect! Please try again. " + _wordList.get(_position) + "... " + _wordList.get(_position));
                 System.out.println("incorrect, try again");
 
                 _repeatFlag = true;
@@ -225,14 +224,5 @@ public class Spelling_Logic {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
-
-
-
-
-
-
-
-
-
 
 }
