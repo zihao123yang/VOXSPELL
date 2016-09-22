@@ -12,7 +12,7 @@ public class Statistics {
     int _faulted;
     int _failed;
     int _wordsTested;
-    DataBase _db;
+
 
     public Statistics(int numWords) {
         _numWords = numWords;
@@ -47,5 +47,6 @@ public class Statistics {
         } else {
             return false;
         }
+
     }
 }

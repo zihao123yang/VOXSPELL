@@ -1,6 +1,7 @@
 package sample;
 
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,7 +18,6 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private DataBase _dataBase = DataBase.getInstance();
-    private RevisionQuiz _revisionData = RevisionQuiz.getInstance();
 
 
     @FXML
@@ -39,20 +39,22 @@ public class Controller implements Initializable {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
 
+    }
 
-
-        _revisionData.printfailed2();
+    public void viewStatisticsClicked() throws IOException {
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("ViewStatsScene.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
 
     }
 
-    public void viewStatisticsClicked() {
+    public void clearStatisticsClicked() throws IOException {
 
-    }
-
-    public void clearStatisticsClicked() {
-        _dataBase.clearStats();
-        _revisionData.clearFailed();
-
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("ClearStatisticsScene.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
     }
 
 
