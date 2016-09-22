@@ -45,7 +45,10 @@ public class Word implements Serializable, Comparable<Word> {
         return _word.compareTo(o._word);
     }
 
-
+    @Override
+    public boolean equals(Object word){
+        return this._word.equals(((Word)word)._word);
+    }
 
 }
 
