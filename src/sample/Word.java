@@ -45,6 +45,27 @@ public class Word implements Serializable, Comparable<Word> {
         return _word.compareTo(o._word);
     }
 
+    @Override
+    public String toString(){
+        return this._word;
+    }
+
+    public int getLevel(){
+        return this._level;
+    }
+
+    public int getNumMastered(){
+        return _numMastered;
+    }
+
+    public int getNumFaulted(){
+        return _numFaulted;
+    }
+
+    public int getNumFailed(){
+        return _numFailed;
+    }
+
 
 
 }
