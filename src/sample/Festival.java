@@ -7,7 +7,11 @@ import java.io.*;
  */
 public class Festival {
 
-    private static String _currentVoice = "(voice_kal_diphone)";
+    private static String _currentVoice = "voice_kal_diphone";
+
+    public static String voice() {
+        return _currentVoice;
+    }
 
     /*
     public static void callFestival(String sayThis) {
@@ -53,7 +57,7 @@ public class Festival {
 
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(_currentVoice);
+            bw.write("(" + _currentVoice + ")");
             bw.newLine();
             bw.write("(Parameter.set 'Duration_Stretch 1.2)");
             bw.newLine();

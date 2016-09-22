@@ -63,9 +63,9 @@ public class SpellingQuizController implements Initializable {
     @FXML
     public void voiceChanging() {
         if (selectVoice.getValue().equals("voice_kal_diphone")) {
-            Festival.setVoice("(voice_kal_diphone)");
+            Festival.setVoice("voice_kal_diphone");
         } else if (selectVoice.getValue().equals("voice_akl_nz_jdt_diphone")) {
-            Festival.setVoice("(voice_akl_nz_jdt_diphone)");
+            Festival.setVoice("voice_akl_nz_jdt_diphone");
         }
     }
 
@@ -74,7 +74,7 @@ public class SpellingQuizController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        selectVoice.setValue("voice_kal_diphone");
+        selectVoice.setValue(Festival.voice());
         selectVoice.setItems(voiceList);
 
         _spellingLogic.setUpQuiz();

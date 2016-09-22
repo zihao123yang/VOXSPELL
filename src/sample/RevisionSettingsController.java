@@ -148,9 +148,9 @@ public class RevisionSettingsController implements Initializable {
     @FXML
     public void voiceChanging() {
         if (selectVoice.getValue().equals("voice_kal_diphone")) {
-            Festival.setVoice("(voice_kal_diphone)");
+            Festival.setVoice("voice_kal_diphone");
         } else if (selectVoice.getValue().equals("voice_akl_nz_jdt_diphone")) {
-            Festival.setVoice("(voice_akl_nz_jdt_diphone)");
+            Festival.setVoice("voice_akl_nz_jdt_diphone");
         }
     }
 
@@ -158,7 +158,7 @@ public class RevisionSettingsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         addButtons();
 
-        selectVoice.setValue("voice_kal_diphone");
+        selectVoice.setValue(Festival.voice());
         selectVoice.setItems(voiceList);
 
 
