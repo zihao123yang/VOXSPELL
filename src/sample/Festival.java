@@ -9,6 +9,7 @@ public class Festival {
 
     private static String _currentVoice = "(voice_kal_diphone)";
 
+    /*
     public static void callFestival(String sayThis) {
         String cmd = "echo " + sayThis + " | festival --tts";
         ProcessBuilder speakWord = new ProcessBuilder("/bin/bash", "-c", cmd);
@@ -17,10 +18,15 @@ public class Festival {
             Process speakWordProcess = speakWord.start();
         } catch (Exception e){}
     }
+    */
 
 
+    public static void setVoice(String voice) {
+        _currentVoice = voice;
+    }
 
-    public static void callFestival2(String sayThis) {
+
+    public static void callFestival(String sayThis) {
         String cmd = "festival -b festival.scm";
 
         writeSayThis(sayThis);
@@ -48,6 +54,8 @@ public class Festival {
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(_currentVoice);
+            bw.newLine();
+            bw.write("(Parameter.set 'Duration_Stretch 1.2)");
             bw.newLine();
             bw.write("(" + "SayText \""+ sayThis + "\")");
             bw.close();

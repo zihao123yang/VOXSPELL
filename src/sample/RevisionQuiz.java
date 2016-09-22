@@ -21,10 +21,9 @@ public class RevisionQuiz {
     public void addToFailed(Word word) {
 
         if (_failedList.containsKey(_level)) {
-            ArrayList<Word> failedLevelList =  _failedList.get(_level);
+            ArrayList<Word> failedLevelList = _failedList.get(_level);
             if (!failedLevelList.contains(word)) {
                 failedLevelList.add(word);
-
             }
         } else {
             ArrayList<Word> failedLevelList = new ArrayList<Word>();

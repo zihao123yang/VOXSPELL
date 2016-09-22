@@ -128,7 +128,11 @@ public class SelectQuizSettingsController implements Initializable {
 
     @FXML
     public void voiceChanging() {
-        if (voiceChoiceBox.getValue().equals)
+        if (voiceChoiceBox.getValue().equals("voice_kal_diphone")) {
+            Festival.setVoice("(voice_kal_diphone)");
+        } else if (voiceChoiceBox.getValue().equals("voice_akl_nz_jdt_diphone")) {
+            Festival.setVoice("(voice_akl_nz_jdt_diphone)");
+        }
     }
 
     @Override

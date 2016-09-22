@@ -45,7 +45,7 @@ public class Controller implements Initializable {
     }
 
     public void clearStatisticsClicked() {
-
+        _dataBase.clearStats();
     }
 
 
