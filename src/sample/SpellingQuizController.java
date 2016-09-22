@@ -29,9 +29,16 @@ public class SpellingQuizController implements Initializable {
     public void userInput() {
 
         String answer = _inputField.getCharacters().toString();
+        _inputField.clear();
 
         _spellingLogic.spellingQuiz(answer);
     }
+
+    @FXML
+    public void textFieldClicked() {
+        _inputField.clear();
+    }
+
 
     @FXML
     public void submitButtonPressed() {
@@ -48,9 +55,10 @@ public class SpellingQuizController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        _spellingLogic.setUpQuiz(2, true);
+        _spellingLogic.setUpQuiz(true);
         _spellingLogic.spellingQuiz("");
 
+        System.out.println(Level.getCurrentlevel());
     }
 
 

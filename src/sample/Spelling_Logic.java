@@ -16,6 +16,8 @@ public class Spelling_Logic {
 
     private DataBase _dataBase;
     private ArrayList<String> _wordList;
+    private Statistics _stats;
+    private RevisionQuiz _revisionData;
 
     private boolean _isNewQuiz;
     private boolean _inputFlag;
@@ -25,32 +27,53 @@ public class Spelling_Logic {
 
 
 
-
-
     public Spelling_Logic() {
 
         _dataBase = DataBase.getInstance();
     }
 
 
-
-    public void setUpQuiz (int level, boolean newQuiz) {
+    public void setUpQuiz (boolean newQuiz) {
         _inputFlag = false;
         _repeatFlag = false;
 
+
+
+
         if (newQuiz == true) {
-            _wordList = _dataBase.makeQuizList(level);
+            _isNewQuiz = true;
+            _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
-            // temporary, revision quiz logic not completed- revision quiz for each level?
-            _wordList = new ArrayList<String>();
+            _isNewQuiz = false;
+
+            ArrayList<Word> preparationList = _revisionData.levelListForRevise();
+
+            if (preparationList == null) {
+
+                //go to next scene
+
+            } else if (preparationList.size() < 10) {
+
+                for (int i = 0; i < preparationList.size(); i++) {
+                    _wordList.add(preparationList.get(i).name());
+                }
+
+            } else if (preparationList.size() >= 10) {
+
+                for (int i = 0; i < 10; i++) {
+                    _wordList.add(preparationList.get(i).name());
+                }
+            }
 
         }
 
         System.out.println(_wordList.size());
+
         _numWords = 10;
 
         _position = 0;
 
+        _stats = new Statistics(_wordList.size());
 
     }
 
@@ -64,7 +87,7 @@ public class Spelling_Logic {
 
             //festival call
             // "Please spell the word " + _wordList.get(_position) +" . " + _wordList.get(_position)
-            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
+//            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
             System.out.println("Spell word: " + _wordList.get(_position));
             _inputFlag = true;
             return;
@@ -77,13 +100,13 @@ public class Spelling_Logic {
             Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             if (_wordList.get(_position).equals(input)) {
                 // festival call - correct!
-                Festival.callFestival("Correct.");
-                Festival.callFestival("...");
+//                Festival.callFestival("Correct.");
+//                Festival.callFestival("...");
 
                 System.out.println("correct! this");
 
                 if (!_isNewQuiz) {
-
+                    _revisionData.removeFromLevel(word);
                 }
 
                 if (_dataBase.wordSeen(word)) {
@@ -94,9 +117,11 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(word);
                 }
 
+                _stats.increaseMastered();
+
             } else {
 
-                Festival.callFestival("Incorrect! Please try again" + _wordList.get(_position) + "... " + _wordList.get(_position));
+//                Festival.callFestival("Incorrect! Please try again" + _wordList.get(_position) + "... " + _wordList.get(_position));
                 System.out.println("incorrect, try again");
 
                 _repeatFlag = true;
@@ -109,11 +134,11 @@ public class Spelling_Logic {
 
             Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             if (_wordList.get(_position).equals(input)) {
-                Festival.callFestival("Correct...");
+//                Festival.callFestival("Correct...");
                 System.out.println("correct!");
 
                 if (!_isNewQuiz) {
-
+                    _revisionData.removeFromLevel(word);
                 }
 
                 if (_dataBase.wordSeen(word)) {
@@ -123,14 +148,13 @@ public class Spelling_Logic {
                     word.addFaulted();
                     _dataBase.addToWordList(word);
                 }
+
+                _stats.increaseFaulted();
 
             } else {
-                Festival.callFestival("Incorrect...");
+//                Festival.callFestival("Incorrect...");
                 System.out.println("incorrect");
 
-                if (!_isNewQuiz) {
-
-                }
 
                 if (_dataBase.wordSeen(word)) {
                     word = _dataBase.getWordStatsList(word);
@@ -140,7 +164,8 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(word);
                 }
 
-
+                _revisionData.addToFailed(word);
+                _stats.increaseFailed();
 
 
             }
@@ -150,24 +175,43 @@ public class Spelling_Logic {
         _position++;
 
         if (_position < _numWords ) {
-            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
+//            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
             System.out.println("Spell word: " + _wordList.get(_position));
             return;
         } else {
-            Festival.callFestival("Quiz finished!");
             System.out.println("Quiz finished");
-            goToNextScene();
-        }
 
+            if (Level.getCurrentlevel() <= 10) {
+                if (_stats.levelPassed()) {
+                    levelComplete();
+                } else {
+                    levelFailed();
+                }
+            }
+        }
 
     }
 
-    public void goToNextScene()  {
+    public void levelComplete()  {
         Stage stage = Main.getPrimaryStage();
         Parent root = null;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            root = FXMLLoader.load(getClass().getResource("LevelComplete.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+
+    public void levelFailed() {
+        Stage stage = Main.getPrimaryStage();
+        Parent root = null;
+
+        try {
+            root = FXMLLoader.load(getClass().getResource("LevelFailed.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

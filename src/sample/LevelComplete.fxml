@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelCompletedController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="180.0" top="40.0" />
+               </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You have completed the level">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="90.0" />
+               </VBox.margin>
+            </Text>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="30.0" layoutY="100.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="40.0" prefWidth="160.0" text="Return to MainMenu" />
+                  <Button layoutX="220.0" layoutY="100.0" mnemonicParsing="false" onAction="#retryLevel" prefHeight="40.0" prefWidth="160.0" text="Re-try level" />
+                  <Button fx:id="nextLevel" layoutX="410.0" layoutY="100.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="40.0" prefWidth="160.0" text="Next level" />
+               </children>
+            </Pane>
+            <Button mnemonicParsing="false" onAction="#playVideo" prefHeight="40.0" prefWidth="170.0" text="watch video!!">
+               <VBox.margin>
+                  <Insets left="215.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

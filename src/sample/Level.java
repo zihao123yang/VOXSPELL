@@ -13,6 +13,11 @@ public class Level {
     }
 
     public static int getCurrentlevel() {
+
         return _currentLevel;
+    }
+
+    public static void nextLevel() {
+        _currentLevel++;
     }
 }
