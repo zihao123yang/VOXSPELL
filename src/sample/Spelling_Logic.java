@@ -215,6 +215,8 @@ public class Spelling_Logic {
         }
     }
 
+
+
     public void levelComplete()  {
         Stage stage = Main.getPrimaryStage();
         Parent root = null;
