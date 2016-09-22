@@ -169,7 +169,7 @@ public class RevisionSettingsController implements Initializable {
 
 
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i <= 10; i++) {
             boolean levelExists = _revisionQUiz.checkAnyWords(i);
 
             if (!levelExists) {

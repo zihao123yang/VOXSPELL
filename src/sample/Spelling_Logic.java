@@ -74,7 +74,7 @@ public class Spelling_Logic {
 
         _position = 0;
 
-        _stats = new Statistics(_wordList.size());
+        //_stats = new Statistics(_wordList.size());
 
     }
 
