@@ -269,4 +269,8 @@ public class DataBase {
         }
     }
 
+    public ArrayList<Word> getStoredStats(){
+        return _storedStats;
+    }
+
 }

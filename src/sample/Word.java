@@ -46,9 +46,27 @@ public class Word implements Serializable, Comparable<Word> {
     }
 
     @Override
-    public boolean equals(Object word){
-        return this._word.equals(((Word)word)._word);
+    public String toString(){
+        return this._word;
     }
+
+    public int getLevel(){
+        return this._level;
+    }
+
+    public int getNumMastered(){
+        return _numMastered;
+    }
+
+    public int getNumFaulted(){
+        return _numFaulted;
+    }
+
+    public int getNumFailed(){
+        return _numFailed;
+    }
+
+
 
 }
 
