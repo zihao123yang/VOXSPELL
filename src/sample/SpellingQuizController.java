@@ -61,6 +61,11 @@ public class SpellingQuizController implements Initializable {
     }
 
     @FXML
+    public void repeatWordPressed() {
+        Festival.callFestival(_spellingLogic.currentWord());
+    }
+
+    @FXML
     public void voiceChanging() {
         if (selectVoice.getValue().equals("voice_kal_diphone")) {
             Festival.setVoice("voice_kal_diphone");
