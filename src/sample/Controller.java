@@ -1,6 +1,7 @@
 package sample;
 
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -48,8 +49,12 @@ public class Controller implements Initializable {
 
     }
 
-    public void clearStatisticsClicked() {
-        _dataBase.clearStats();
+    public void clearStatisticsClicked() throws IOException {
+
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("ClearStatisticsScene.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
     }
 
 

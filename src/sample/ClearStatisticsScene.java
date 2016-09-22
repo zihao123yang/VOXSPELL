@@ -1,10 +1,15 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -60,13 +65,21 @@ public class ClearStatisticsScene implements Initializable{
     public void noPressed(){
 
         noLabel.setVisible(true);
-        mainMenuButton.arm();
+
 
         yesButton.setVisible(false);
         noButton.setVisible(false);
 
+        mainMenuButton.arm();
         mainMenuButton.setVisible(true);
 
+    }
+
+    public void mainMenuPressed() throws IOException{
+        Stage stage = Main.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
     }
 
 }
