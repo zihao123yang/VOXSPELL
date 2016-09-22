@@ -14,14 +14,14 @@ public class Statistics {
     int _wordsTested;
     DataBase _db;
 
-    public Statistics(int numWords, DataBase db) {
-        _numWords = numWords;
-        _mastered = 0;
-        _faulted = 0;
-        _failed = 0;
-        _wordsTested = 0;
-        _db = db;
-    }
+    //public Statistics(int numWords, DataBase db) {
+    //    _numWords = numWords;
+    //    _mastered = 0;
+    //    _faulted = 0;
+    //    _failed = 0;
+    //    _wordsTested = 0;
+    //    _db = db;
+    //}
 
     public void increaseMastered() {
         _mastered++;
@@ -51,6 +51,11 @@ public class Statistics {
 
     }
 
+    /**
+     * returns a string representation of the users stats, to be displayed in the view stats scene.
+     * @param levelToDisplay
+     * @return
+     */
     public String printStatistics(int levelToDisplay){
 
         StringBuilder sb = new StringBuilder();
