@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -32,6 +33,11 @@ public class SelectQuizSettingsController implements Initializable {
     public void addButtons() {
         myButtons.addAll(Arrays.asList(level1, level2, level3, level4,level5, level6, level7, level8,level9,level10));
     }
+
+    int _levelUnlocked;
+
+    @FXML
+    Button continueButton;
 
     @FXML
     ToggleButton level1;
@@ -71,64 +77,74 @@ public class SelectQuizSettingsController implements Initializable {
     @FXML
     public void level1Pressed(ActionEvent event) {
         Level.setLevel(1);
-        Level.setUnlockedlevel(1);
+        _levelUnlocked = 1;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level2Pressed() {
 
         Level.setLevel(2);
-        Level.setUnlockedlevel(2);
+        _levelUnlocked = 2;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level3Pressed() {
 
         Level.setLevel(3);
-        Level.setUnlockedlevel(3);
+        _levelUnlocked = 3;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level4Pressed() {
 
         Level.setLevel(4);
-        Level.setUnlockedlevel(4);
+        _levelUnlocked = 4;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level5Pressed() {
         Level.setLevel(5);
-        Level.setUnlockedlevel(5);
+        _levelUnlocked = 5;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level6Pressed() {
         Level.setLevel(6);
-        Level.setUnlockedlevel(6);
+        _levelUnlocked = 6;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level7Pressed() {
         Level.setLevel(7);
-        Level.setUnlockedlevel(7);
+        _levelUnlocked = 7;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level8Pressed() {
         Level.setLevel(8);
-        Level.setUnlockedlevel(8);
+        _levelUnlocked = 8;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level9Pressed() {
         Level.setLevel(9);
-        Level.setUnlockedlevel(9);
+        _levelUnlocked = 9;
+        continueButton.setDisable(false);
     }
 
     @FXML
     public void level10Pressed() {
         Level.setLevel(10);
-        Level.setUnlockedlevel(10);
+        _levelUnlocked = 10;
+        continueButton.setDisable(false);
     }
 
     @FXML
@@ -139,15 +155,24 @@ public class SelectQuizSettingsController implements Initializable {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
 
+        Level.setUnlockedlevel(_levelUnlocked);
+        Spelling_Logic._isNewQuiz = true;
+
 
     }
 
     @FXML
     public void returnToMainMenu() throws IOException {
+
         Stage stage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
+
+
+
+
+
     }
 
     @FXML
@@ -166,6 +191,8 @@ public class SelectQuizSettingsController implements Initializable {
 
         voiceChoiceBox.setValue("voice_kal_diphone");
         voiceChoiceBox.setItems(voiceList);
+
+        continueButton.setDisable(true);
 
 
         if (Level.getUnlockedlevel() != 0) {

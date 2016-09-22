@@ -19,33 +19,37 @@ public class Spelling_Logic {
     private Statistics _stats;
     private RevisionQuiz _revisionData;
 
-    private boolean _isNewQuiz;
+    public static boolean _isNewQuiz;
     private boolean _inputFlag;
     private boolean _repeatFlag;
     private int _position;
     private int _numWords;
 
 
+    public void setIsNewQuiz(boolean newQuiz) {
+        _isNewQuiz = newQuiz;
+    }
+
 
     public Spelling_Logic() {
 
         _dataBase = DataBase.getInstance();
         _revisionData = RevisionQuiz.getInstance();
+        _wordList = new ArrayList<String>();
     }
 
 
-    public void setUpQuiz (boolean newQuiz) {
+    public void setUpQuiz () {
         _inputFlag = false;
         _repeatFlag = false;
 
 
 
 
-        if (newQuiz == true) {
-            _isNewQuiz = true;
+        if (_isNewQuiz == true) {
+
             _wordList = _dataBase.makeQuizList(Level.getCurrentlevel());
         } else {
-            _isNewQuiz = false;
 
             ArrayList<Word> preparationList = _revisionData.levelListForRevise();
 
@@ -70,7 +74,7 @@ public class Spelling_Logic {
 
         System.out.println(_wordList.size());
 
-        _numWords = 10;
+        _numWords = -_wordList.size();
 
         _position = 0;
 
@@ -99,7 +103,7 @@ public class Spelling_Logic {
         if (_repeatFlag == false) {
 
             Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
-            if (_wordList.get(_position).equals(input)) {
+            if (_wordList.get(_position).toLowerCase().equals(input.toLowerCase())) {
 
                 Festival.callFestival("Correct, well done");
 
@@ -133,7 +137,7 @@ public class Spelling_Logic {
         if (_repeatFlag == true) {
 
             Word word = new Word(_wordList.get(_position), Level.getCurrentlevel());
-            if (_wordList.get(_position).equals(input)) {
+            if (_wordList.get(_position).toLowerCase().equals(input.toLowerCase())) {
                 Festival.callFestival("Correct");
                 System.out.println("correct!");
 
@@ -156,6 +160,8 @@ public class Spelling_Logic {
                 System.out.println("incorrect");
 
 
+                _revisionData.addToFailed(word);
+
                 if (_dataBase.wordSeen(word)) {
                     word = _dataBase.getWordStatsList(word);
                     word.addFailed();
@@ -164,7 +170,7 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(word);
                 }
 
-                _revisionData.addToFailed(word);
+               // _revisionData.addToFailed(word);
                 _stats.increaseFailed();
 
 

@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
@@ -31,6 +32,9 @@ public class RevisionSettingsController implements Initializable {
     public void addButtons() {
         myButtons.addAll(Arrays.asList(level1, level2, level3, level4,level5, level6, level7, level8,level9,level10));
     }
+
+    @FXML
+    Button continueButton;
 
     @FXML
     ToggleButton level1;
@@ -71,64 +75,54 @@ public class RevisionSettingsController implements Initializable {
     public void level1Pressed(ActionEvent event) {
 
         Level.setLevel(1);
-        Level.setUnlockedlevel(1);
     }
 
     @FXML
     public void level2Pressed() {
 
         Level.setLevel(2);
-        Level.setUnlockedlevel(2);
     }
 
     @FXML
     public void level3Pressed() {
 
         Level.setLevel(3);
-        Level.setUnlockedlevel(3);
     }
 
     @FXML
     public void level4Pressed() {
 
         Level.setLevel(4);
-        Level.setUnlockedlevel(4);
     }
 
     @FXML
     public void level5Pressed() {
         Level.setLevel(5);
-        Level.setUnlockedlevel(5);
     }
 
     @FXML
     public void level6Pressed() {
         Level.setLevel(6);
-        Level.setUnlockedlevel(6);
     }
 
     @FXML
     public void level7Pressed() {
         Level.setLevel(7);
-        Level.setUnlockedlevel(7);
     }
 
     @FXML
     public void level8Pressed() {
         Level.setLevel(8);
-        Level.setUnlockedlevel(8);
     }
 
     @FXML
     public void level9Pressed() {
         Level.setLevel(9);
-        Level.setUnlockedlevel(9);
     }
 
     @FXML
     public void level10Pressed() {
         Level.setLevel(10);
-        Level.setUnlockedlevel(10);
     }
 
     @FXML
@@ -138,6 +132,8 @@ public class RevisionSettingsController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("SpellingQuiz.fxml"));
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
+
+        Spelling_Logic._isNewQuiz = false;
 
 
     }
@@ -161,19 +157,22 @@ public class RevisionSettingsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         addButtons();
 
         voiceChoiceBox.setValue("voice_kal_diphone");
         voiceChoiceBox.setItems(voiceList);
 
 
+        continueButton.setDisable(true);
 
-        for (int i = 0; i <= 10; i++) {
-            boolean levelExists = _revisionQUiz.checkAnyWords(i);
+
+        for (int i = 0; i < 10; i++) {
+            boolean levelExists = _revisionQUiz.checkAnyWords(i + 1);
 
             if (!levelExists) {
-                myButtons.get(i - 1).setDisable(true);
+                myButtons.get(i).setDisable(true);
+            } else {
+                continueButton.setDisable(false);
             }
         }
 
