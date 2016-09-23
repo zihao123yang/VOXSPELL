@@ -109,6 +109,7 @@ public class Spelling_Logic {
                     _revisionData.removeFromLevel(_word);
                 }
 
+                /*
                 if (_dataBase.wordSeen(_word)) {
                     _word = _dataBase.getWordStatsList(_word);
                     _word.addMastered();
@@ -116,6 +117,7 @@ public class Spelling_Logic {
                     _word.addMastered();
                     _dataBase.addToWordList(_word);
                 }
+                */
 
                 //_stats.increaseMastered();
 
@@ -140,6 +142,7 @@ public class Spelling_Logic {
                 if (!_isNewQuiz) {
                     _revisionData.removeFromLevel(_word);
                 }
+                /*
 
                 if (_dataBase.wordSeen(_word)) {
                     _word = _dataBase.getWordStatsList(_word);
@@ -148,8 +151,7 @@ public class Spelling_Logic {
                     _word.addFaulted();
                     _dataBase.addToWordList(_word);
                 }
-
-                //_stats.increaseFaulted();
+                */
 
             } else {
                 Festival.callFestival("Incorrect...");
@@ -159,6 +161,7 @@ public class Spelling_Logic {
 
                 _revisionData.addToFailed(_word);
 
+                /*
                 if (_dataBase.wordSeen(_word)) {
                     _word = _dataBase.getWordStatsList(_word);
                     _word.addFailed();
@@ -167,8 +170,7 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(_word);
                 }
 
-               // _revisionData.addToFailed(word);
-                //_stats.increaseFailed();
+                */
 
 
             }
@@ -247,6 +249,36 @@ public class Spelling_Logic {
 
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
+    }
+
+    public void addFailedStats() {
+        if (_dataBase.wordSeen(_word)) {
+            _word = _dataBase.getWordStatsList(_word);
+            _word.addFailed();
+        } else {
+            _word.addFailed();
+            _dataBase.addToWordList(_word);
+        }
+    }
+
+    public void addFaultedStats() {
+        if (_dataBase.wordSeen(_word)) {
+            _word = _dataBase.getWordStatsList(_word);
+            _word.addFaulted();
+        } else {
+            _word.addFaulted();
+            _dataBase.addToWordList(_word);
+        }
+    }
+
+    public void addMasteredStats() {
+        if (_dataBase.wordSeen(_word)) {
+            _word = _dataBase.getWordStatsList(_word);
+            _word.addMastered();
+        } else {
+            _word.addMastered();
+            _dataBase.addToWordList(_word);
+        }
     }
 
 }

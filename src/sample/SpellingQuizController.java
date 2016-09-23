@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -23,6 +24,7 @@ public class SpellingQuizController implements Initializable {
 
 
     private Spelling_Logic _spellingLogic = new Spelling_Logic(_stats);
+    private DataBase _dataBase = DataBase.getInstance();
 
 
     @FXML
@@ -47,18 +49,7 @@ public class SpellingQuizController implements Initializable {
 
     ObservableList<String> voiceList = FXCollections.observableArrayList("voice_kal_diphone", "voice_akl_nz_jdt_diphone");
 
-   // @FXML
-    //public void userInput() {
 
-
-       // String answer = _inputField.getCharacters().toString();
-//        _inputField.clear();
-
-
-
-  //     _spellingLogic.spellingQuiz(answer);
-    //    _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy());
-    //}
 
     @FXML
     public void textFieldClicked() {
@@ -79,6 +70,7 @@ public class SpellingQuizController implements Initializable {
             if (_spellingLogic.spellingCorrect(userInput)) {
 
                 _stats.increaseMastered();
+                _spellingLogic.addMasteredStats();
 
 
                 _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
@@ -92,23 +84,21 @@ public class SpellingQuizController implements Initializable {
 
             if (_spellingLogic.spellingCorrect(userInput)) {
                 _stats.increaseFaulted();
+                _spellingLogic.addFaultedStats();
 
                 _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
 
-                System.out.println();
-                System.out.println(_stats.calculateLevelAccuracy(Level.getCurrentlevel()));
-                System.out.println();
+
 
                 _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateLevelAccuracy(Level.getCurrentlevel()) + "%");
 
             } else {
+
                 _stats.increaseFailed();
+                _spellingLogic.addFailedStats();
+
             }
-            System.out.println();
-            System.out.println("num mastered: " + _stats._mastered);
-            System.out.println();
-            System.out.println("words tested: " + _stats._wordsTested);
-            System.out.println();
+
             _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
             _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateLevelAccuracy(Level.getCurrentlevel()) + "%");
         }
