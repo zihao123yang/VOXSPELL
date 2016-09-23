@@ -13,13 +13,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by zihao123yang on 22/09/16.
+ * javaFX controller class for the scene LevelFailed.fxml
  */
 public class LevelFailedController implements Initializable {
 
     @FXML
     private Button nextLevel;
 
+    /**
+     * controls the logic for the retry level button, when pressed the scene switches to SpellingQuiz.fxml
+     * @throws IOException
+     */
     @FXML
     public void retryLevel() throws IOException {
 
@@ -29,6 +33,10 @@ public class LevelFailedController implements Initializable {
         stage.show();
     }
 
+    /**
+     * controls the logic for the return to main menu button, when pressed the scene switches to sample.fxml (our main menu)
+     * @throws IOException
+     */
     public void returnToMainMenu() throws IOException {
         Stage stage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -36,10 +44,12 @@ public class LevelFailedController implements Initializable {
         stage.show();
     }
 
-    public void Statistics() {
 
-    }
-
+    /**
+     * called when the scene is opened, makes sure to disable the next level button if on level 10
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (Level.getCurrentlevel() >= 10) {

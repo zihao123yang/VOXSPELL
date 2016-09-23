@@ -1,7 +1,7 @@
 package sample;
 
 /**
- * Created by zihao123yang on 22/09/16.
+ * a class dedicated to the visual representation of spelling statistics inside the GUI
  */
 public class DisplayingStats {
 
@@ -12,7 +12,6 @@ public class DisplayingStats {
      * @param levelToDisplay
      * @return
      */
-
     public String printStatistics(int levelToDisplay){
 
         StringBuilder sb = new StringBuilder();
@@ -20,11 +19,14 @@ public class DisplayingStats {
 
         int timesAppeared;
 
+
+        // for every word in the database
         for(Word word : _db.getStoredStats()){
 
             // if the level the user specifies is equal to the level of the current word
             if(word.getLevel() == levelToDisplay){
 
+                // calculate how many times the word has appeared
                 timesAppeared = word.getNumMastered() + word.getNumFaulted() + word.getNumFailed();
 
                 sb.append("WORD: " + word.toString() + "\n");

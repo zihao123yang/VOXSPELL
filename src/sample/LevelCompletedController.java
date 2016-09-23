@@ -13,13 +13,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by zihao123yang on 22/09/16.
+ * javaFX controller for the LevelComplete.fxml scene
  */
 public class LevelCompletedController implements Initializable{
 
     @FXML
     Button nextLevel;
 
+    /**
+     * method called when the return to main menu button is pressed, changing the scene to sample.fxml
+     * @throws IOException
+     */
     @FXML
     public void returnToMainMenu() throws IOException {
         Stage stage = Main.getPrimaryStage();
@@ -28,6 +32,11 @@ public class LevelCompletedController implements Initializable{
         stage.show();
     }
 
+
+    /**
+     * method called when the retry level button is pressed, changing the scene to SpellingQuiz.fxml
+     * @throws IOException
+     */
     @FXML
     public void retryLevel() throws IOException {
         Stage stage = Main.getPrimaryStage();
@@ -36,6 +45,11 @@ public class LevelCompletedController implements Initializable{
         stage.show();
     }
 
+
+    /**
+     * method called when the next level button is pressed, updating the level and changing the scene to SpellingQuiz.fxml
+     * @throws IOException
+     */
     @FXML
     public void nextLevel() throws IOException {
         Level.nextLevel();
@@ -45,6 +59,10 @@ public class LevelCompletedController implements Initializable{
         stage.show();
     }
 
+    /**
+     * method called when the play video button is pressed, changing the scene to SpellingQuiz.fxml
+     * @throws IOException
+     */
     @FXML
     public void playVideo() throws IOException {
         Level.nextLevel();
@@ -54,6 +72,11 @@ public class LevelCompletedController implements Initializable{
         stage.show();
     }
 
+    /**
+     * called after the quiz is completed and checks if the next level is accessible
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (Level.getCurrentlevel() >= 10) {
