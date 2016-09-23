@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0077BE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="175.0" layoutY="200.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #933D41;">
+         <children>
+            <Text fill="WHITE" layoutX="42.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RETURN TO MAIN MENU" />
+         </children></Pane>
+      <Pane layoutX="175.0" layoutY="260.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #933D41;">
+         <children>
+            <Text fill="#f8f1f1" layoutX="102.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RETRY" />
+         </children></Pane>
+      <Pane layoutX="175.0" layoutY="320.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #933D41;">
+         <children>
+            <Text fill="#fcfcfc" layoutX="111.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children>
+      </Pane>
+      <Text fill="#e8e8e8" layoutX="102.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REVISION QUIZ FINISHED">
+         <font>
+            <Font name="Loma" size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

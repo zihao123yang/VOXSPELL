@@ -6,16 +6,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelFailedController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelFailedController">
    <children>
-      <Text layoutX="145.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You didn't pass the level">
+      <Text layoutX="117.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU DIDN'T PASS THE LEVEL">
          <font>
-            <Font size="25.0" />
+            <Font name="Loma" size="25.0" />
          </font>
       </Text>
-      <Button layoutX="195.0" layoutY="270.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="30.0" prefWidth="200.0" text="return to main menu" />
-      <Button layoutX="195.0" layoutY="220.0" mnemonicParsing="false" onAction="#retryLevel" prefHeight="30.0" prefWidth="200.0" text="retry" />
-      <Button layoutX="195.0" layoutY="320.0" mnemonicParsing="false" onAction="#Statistics" prefHeight="30.0" prefWidth="200.0" text="statistics" />
+      <Button layoutX="195.0" layoutY="270.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="MAIN MENU" textFill="WHITE" />
+      <Button layoutX="195.0" layoutY="220.0" mnemonicParsing="false" onAction="#retryLevel" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="RETRY" textFill="WHITE" />
+      <Button layoutX="195.0" layoutY="320.0" mnemonicParsing="false" onAction="#Statistics" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="STATISTICS" textFill="WHITE" />
       <Text layoutX="281.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
          <font>
             <Font size="20.0" />
