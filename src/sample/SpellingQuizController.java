@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 public class SpellingQuizController implements Initializable {
 
 
+
     Statistics _stats = new Statistics();
 
 
