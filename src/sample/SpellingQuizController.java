@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -18,9 +19,22 @@ import java.util.ResourceBundle;
  */
 public class SpellingQuizController implements Initializable {
 
-    private Spelling_Logic _spellingLogic = new Spelling_Logic();
+
+    Statistics _stats = new Statistics();
 
 
+    private Spelling_Logic _spellingLogic = new Spelling_Logic(_stats);
+    private DataBase _dataBase = DataBase.getInstance();
+
+
+    @FXML
+    private Text _levelAccuracyText;
+
+    @FXML
+    private Text _testAccuracyText;
+
+    @FXML
+    private Text _levelText;
 
     @FXML
     private ComboBox selectVoice;
@@ -35,14 +49,7 @@ public class SpellingQuizController implements Initializable {
 
     ObservableList<String> voiceList = FXCollections.observableArrayList("voice_kal_diphone", "voice_akl_nz_jdt_diphone");
 
-    @FXML
-    public void userInput() {
 
-        String answer = _inputField.getCharacters().toString();
-        _inputField.clear();
-
-        _spellingLogic.spellingQuiz(answer);
-    }
 
     @FXML
     public void textFieldClicked() {
@@ -59,19 +66,44 @@ public class SpellingQuizController implements Initializable {
         int iteration = _spellingLogic.whichIteration();
 
         if(iteration == 1) {        // mastered, ...
+
             if (_spellingLogic.spellingCorrect(userInput)) {
+
+                _stats.increaseMastered();
+                _spellingLogic.addMasteredStats();
+
+
+                _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
+                _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateLevelAccuracy(Level.getCurrentlevel()) + "%");
                 //-------------------------------------------------------------------
             } else {
                 //----------------------------------------
             }
 
         } else if (iteration == 2) {    //faulted, failed
+
             if (_spellingLogic.spellingCorrect(userInput)) {
-                //-----------------------------------------------------------
+                _stats.increaseFaulted();
+                _spellingLogic.addFaultedStats();
+
+                _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
+
+
+
+                _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateLevelAccuracy(Level.getCurrentlevel()) + "%");
+
             } else {
-                //-----------------------------------------------
+
+                _stats.increaseFailed();
+                _spellingLogic.addFailedStats();
+
             }
+
+            _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
+            _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateLevelAccuracy(Level.getCurrentlevel()) + "%");
         }
+
+
 
         _spellingLogic.spellingQuiz(userInput);
 
@@ -103,6 +135,13 @@ public class SpellingQuizController implements Initializable {
 
         _spellingLogic.setUpQuiz();
         _spellingLogic.spellingQuiz("");
+
+        System.out.println(Level.getCurrentlevel());
+
+        _levelText.setText("SPELLING QUIZ LEVEL: " +  Level.getCurrentlevel());
+        _testAccuracyText.setText("TEST ACCURACY: 100.0%");
+        _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateLevelAccuracy(Level.getCurrentlevel()) + "%");
+
 
 
 
