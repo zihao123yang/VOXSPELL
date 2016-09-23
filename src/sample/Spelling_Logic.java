@@ -250,6 +250,7 @@ public class Spelling_Logic {
 
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
+
     }
 
     public void addFailedStats() {
