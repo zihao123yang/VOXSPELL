@@ -88,7 +88,7 @@ public class Spelling_Logic {
 
             _word = new Word(_wordList.get(_position),Level.getCurrentlevel());
 
-            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
+            Festival.callFestival("Please spell the word " + _wordList.get(_position));
 
             _inputFlag = true;
             return;
@@ -123,7 +123,7 @@ public class Spelling_Logic {
 
             } else {
 
-                Festival.callFestival("Incorrect! Please try again. " + _wordList.get(_position) + "... " + _wordList.get(_position));
+                Festival.callFestival("Incorrect! Please try again. " + _wordList.get(_position));
 
 
                 _repeatFlag = true;
@@ -182,13 +182,14 @@ public class Spelling_Logic {
 
         if (_position < _numWords ) {
             _word = new Word(_wordList.get(_position), Level.getCurrentlevel());
-            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
+            Festival.callFestival("Please spell the word " + _wordList.get(_position));
 
             return;
         } else {
 
-
-            if (Level.getCurrentlevel() <= 10) {
+            if (!_isNewQuiz) {
+                revisionComplete();
+            }else if(Level.getCurrentlevel() <= 10) {
 
                 if (_stats.levelPassed()) {
                     levelComplete();
