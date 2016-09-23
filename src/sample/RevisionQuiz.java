@@ -99,7 +99,7 @@ public class RevisionQuiz {
             ArrayList<Word> list = _failedList.get(2);
 
             for (int i = 1; i < list.size(); i++) {
-                System.out.print(list.get(i).name());
+
             }
         }
 
