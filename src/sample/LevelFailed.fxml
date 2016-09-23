@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -16,12 +15,12 @@
             <Font name="Loma" size="25.0" />
          </font>
       </Text>
-      <Button layoutX="195.0" layoutY="270.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="MAIN MENU" textFill="WHITE" />
-      <Button layoutX="195.0" layoutY="220.0" mnemonicParsing="false" onAction="#retryLevel" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="RETRY" textFill="WHITE">
+      <Button layoutX="195.0" layoutY="270.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="MAIN MENU" />
+      <Button layoutX="195.0" layoutY="220.0" mnemonicParsing="false" onAction="#retryLevel" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="RETRY" >
          <font>
             <Font name="Loma" size="13.0" />
          </font></Button>
-      <Button layoutX="195.0" layoutY="320.0" mnemonicParsing="false" onAction="#Statistics" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="STATISTICS" textFill="WHITE" />
+      <Button layoutX="195.0" layoutY="320.0" mnemonicParsing="false" onAction="#Statistics" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0077BE;" text="STATISTICS" />
       <Text fill="#0077be" layoutX="250.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SORRY">
          <font>
             <Font name="Loma" size="25.0" />

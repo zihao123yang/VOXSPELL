@@ -243,7 +243,7 @@ public class Spelling_Logic {
         Parent root = null;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("LevelFailed.fxml"));
+            root = FXMLLoader.load(getClass().getResource("LevelFailed1.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
