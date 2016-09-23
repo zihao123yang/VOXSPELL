@@ -126,6 +126,14 @@ public class SpellingQuizController implements Initializable {
         }
     }
 
+    public void textFieldChange(String input) {
+        if (_spellingLogic.spellingCorrect(input)) {
+            _inputField.setStyle("-fx-background-color: #317873;");
+        } else {
+            _inputField.setStyle("-fx-background-color:  #933D41");
+        }
+    }
+
 
 
     @Override
@@ -142,9 +150,6 @@ public class SpellingQuizController implements Initializable {
         _levelText.setText("LEVEL " +  Level.getCurrentlevel());
         _testAccuracyText.setText("TEST ACCURACY: 100.0%");
         _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateLevelAccuracy(Level.getCurrentlevel()) + "%");
-
-
-
 
     }
 
