@@ -1,6 +1,7 @@
 package sample;
 
 /**
+ * Representation of levels in the application
  * Created by zihao123yang on 21/09/16.
  */
 public class Level {

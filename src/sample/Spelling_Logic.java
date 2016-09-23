@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.istack.internal.NotNull;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * Logic for spelling quiz is found here, main logic which allows a quiz to operate
  * Created by zihao123yang on 16/09/16.
  */
 public class Spelling_Logic {
@@ -70,6 +70,7 @@ public class Spelling_Logic {
 
         }
 
+        System.out.println(_wordList.size());
 
         _numWords = _wordList.size();
 
@@ -88,8 +89,8 @@ public class Spelling_Logic {
 
             _word = new Word(_wordList.get(_position),Level.getCurrentlevel());
 
-            Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
-
+            Festival.callFestival("Please spell the word. " + _wordList.get(_position));
+            System.out.println("Spell word: " + _wordList.get(_position));
             _inputFlag = true;
             return;
 
@@ -103,7 +104,7 @@ public class Spelling_Logic {
 
                 Festival.callFestival("Correct, well done");
 
-
+                System.out.println("correct! hello");
 
                 if (!_isNewQuiz) {
                     _revisionData.removeFromLevel(_word);
@@ -123,8 +124,8 @@ public class Spelling_Logic {
 
             } else {
 
-                Festival.callFestival("Incorrect! Please try again. " + _wordList.get(_position) + "... " + _wordList.get(_position));
-
+                Festival.callFestival("Incorrect! Please try again. " + _wordList.get(_position));
+                System.out.println("incorrect, try again");
 
                 _repeatFlag = true;
                 return;
@@ -137,7 +138,7 @@ public class Spelling_Logic {
             _word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             if (_wordList.get(_position).toLowerCase().trim().equals(input.toLowerCase().trim())) {
                 Festival.callFestival("Correct");
-
+                System.out.println("correct!");
 
                 if (!_isNewQuiz) {
                     _revisionData.removeFromLevel(_word);
@@ -155,7 +156,7 @@ public class Spelling_Logic {
 
             } else {
                 Festival.callFestival("Incorrect...");
-
+                System.out.println("incorrect");
 
 
 
@@ -179,16 +180,18 @@ public class Spelling_Logic {
         _repeatFlag = false;
         _position++;
 
-
+        System.out.println("position: " + _position + "    numwords: " + _numWords);
         if (_position < _numWords ) {
             _word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
-
+            System.out.println("Spell word: " + _wordList.get(_position));
             return;
         } else {
+            System.out.println("Quiz finished");
 
-
-            if (Level.getCurrentlevel() <= 10) {
+            if (!_isNewQuiz) {
+                revisionComplete();
+            } else if (Level.getCurrentlevel() <= 10) {
 
                 if (_stats.levelPassed()) {
                     levelComplete();
@@ -222,34 +225,40 @@ public class Spelling_Logic {
 
 
 
-    public void levelComplete()  {
-        Stage stage = Main.getPrimaryStage();
-        Parent root = null;
+    public void levelComplete() {
 
         try {
-            root = FXMLLoader.load(getClass().getResource("LevelComplete.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+            Stage stage = Main.getPrimaryStage();
+            Parent root = FXMLLoader.load(getClass().getResource("LevelComplete.fxml"));
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (Exception e) {
+
         }
 
-        Level.nextlevelUnlocked();
-
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
     }
 
     public void levelFailed() {
-        Stage stage = Main.getPrimaryStage();
-        Parent root = null;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("LevelFailed.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            Stage stage = Main.getPrimaryStage();
+            Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (Exception e) {
 
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
+        }
+    }
+
+    public void revisionComplete() {
+        try {
+            Stage stage = Main.getPrimaryStage();
+            Parent root = FXMLLoader.load(getClass().getResource("RevisionComplete.fxml"));
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (Exception e) {
+
+        }
     }
 
     public void addFailedStats() {
