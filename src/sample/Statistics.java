@@ -12,15 +12,21 @@ public class Statistics {
     int _faulted;
     int _failed;
     int _wordsTested;
+    DataBase _db = DataBase.getInstance();
 
 
-    public Statistics(int numWords) {
-        _numWords = numWords;
+    public Statistics() {
+        _numWords = 0;
         _mastered = 0;
         _faulted = 0;
         _failed = 0;
         _wordsTested = 0;
     }
+
+    public void setNumWords(int num) {
+        _numWords = num;
+    }
+
 
     public void increaseMastered() {
         _mastered++;
@@ -37,8 +43,14 @@ public class Statistics {
         _wordsTested++;
     }
 
+    /**
+     * returns accuarcy as a percentage
+     * @return
+     */
     public double calculateAccurracy() {
-        return _mastered/_wordsTested;
+
+
+        return Math.round(((double)_mastered)/((double)_wordsTested)*100);
     }
 
     public boolean levelPassed() {
@@ -49,4 +61,32 @@ public class Statistics {
         }
 
     }
+
+    public double calculateLevelAccuracy(int level) {
+
+        int numMasteredOnLevel = 0;
+        int wordsAppearedOnLevel = 0;
+
+
+
+        for(Word word : _db.getStoredStats()){
+            if(word.getLevel() == level){
+
+                wordsAppearedOnLevel += word.getNumFailed() + word.getNumFaulted() + word.getNumMastered();
+                numMasteredOnLevel += word.getNumMastered();
+            }
+        }
+
+        System.out.println("num mastered" + numMasteredOnLevel);
+        System.out.println("words appeared on lvl" + wordsAppearedOnLevel);
+
+        if (wordsAppearedOnLevel == 0){
+            System.out.println("User has not attempted quiz for this level");
+            return 100.0;
+        }
+
+        return Math.round(((double)numMasteredOnLevel)/((double)wordsAppearedOnLevel)*100);
+
+    }
+
 }

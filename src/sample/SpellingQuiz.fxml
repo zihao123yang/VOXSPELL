@@ -17,49 +17,69 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SpellingQuizController">
    <top>
-      <Text fx:id="submitButton" strokeType="OUTSIDE" strokeWidth="0.0" text="Spelling Quiz Level: X" underline="true" BorderPane.alignment="CENTER">
+      <Text fx:id="_levelText" strokeType="OUTSIDE" strokeWidth="0.0" text="SPELLING QUIZ LEVEL: 1" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
-            <Font size="30.0" />
+            <Font name="Loma" size="30.0" />
          </font>
       </Text>
    </top>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="please enter word here:">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PLEASE ENTER WORD BELOW:">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="20.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="_inputField" onAction="#userInput" onMouseClicked="#textFieldClicked" text="type word here">
+            <TextField fx:id="_inputField" onAction="#submitButtonPressed" onMouseClicked="#textFieldClicked" promptText="TYPE WORD HERE">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="5.0" />
                </VBox.margin>
             </TextField>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#repeatWordPressed" prefWidth="200.0" text="i didn't quite get that...">
+                  <Button mnemonicParsing="false" onAction="#repeatWordPressed" prefWidth="200.0" text="REPEAT WORD">
                      <HBox.margin>
-                        <Insets left="20.0" top="20.0" />
+                        <Insets left="40.0" top="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="_submitButton" mnemonicParsing="false" onAction="#submitButtonPressed" prefWidth="200.0" text="submit">
+                  <Button fx:id="_submitButton" alignment="CENTER" mnemonicParsing="false" onAction="#submitButtonPressed" prefWidth="200.0" text="SUBMIT ANSWER">
                      <HBox.margin>
-                        <Insets left="20.0" top="20.0" />
+                        <Insets left="115.0" top="20.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="86.0" prefWidth="600.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change voice:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT VOICE:">
                      <HBox.margin>
-                        <Insets left="60.0" right="10.0" />
+                        <Insets left="70.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </Text>
-                  <ComboBox fx:id="selectVoice" onAction="#voiceChanging" prefHeight="26.0" prefWidth="206.0" />
+                  <ComboBox fx:id="selectVoice" onAction="#voiceChanging" prefHeight="26.0" prefWidth="206.0">
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin></ComboBox>
                </children>
             </HBox>
+            <Label />
+            <Text fx:id="_testAccuracyText" strokeType="OUTSIDE" strokeWidth="0.0" text="TEST ACCURACY: 75%" textAlignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="200.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="_levelAccuracyText" strokeType="OUTSIDE" strokeWidth="0.0" text="LEVEL ACCURACY: 68%" textAlignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="195.0" top="10.0" />
+               </VBox.margin>
+            </Text>
          </children>
       </VBox>
    </center>
