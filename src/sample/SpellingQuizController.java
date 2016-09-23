@@ -138,7 +138,7 @@ public class SpellingQuizController implements Initializable {
 
         System.out.println(Level.getCurrentlevel());
 
-        _levelText.setText("SPELLING QUIZ LEVEL: " +  Level.getCurrentlevel());
+        _levelText.setText("LEVEL " +  Level.getCurrentlevel());
         _testAccuracyText.setText("TEST ACCURACY: 100.0%");
         _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateLevelAccuracy(Level.getCurrentlevel()) + "%");
 

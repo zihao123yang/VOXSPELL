@@ -17,14 +17,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0077BE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SelectQuizSettingsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SelectQuizSettingsController">
    <children>
-      <Text fill="WHITE" layoutX="104.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOXSPELL: SETTINGS SELECT">
+      <Text fill="#0077be" layoutX="104.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOXSPELL: SETTINGS SELECT">
          <font>
             <Font name="Loma" size="25.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="149.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOICE:" underline="true">
+      <Text fill="#0077be" layoutX="149.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOICE:" underline="true">
          <font>
             <Font name="Loma" size="15.0" />
          </font>
@@ -47,71 +47,101 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="LEVEL:" underline="true" wrappingWidth="50.22216796875">
+            <Text fill="#0077be" strokeType="OUTSIDE" strokeWidth="0.0" text="LEVEL:" underline="true" wrappingWidth="50.22216796875">
                <font>
                   <Font name="Loma" size="15.0" />
                </font>
             </Text>
-            <ToggleButton fx:id="level1" mnemonicParsing="false" onAction="#level1Pressed" prefHeight="25.0" prefWidth="64.0" text="1" GridPane.columnIndex="1">
+            <ToggleButton fx:id="level1" mnemonicParsing="false" onAction="#level1Pressed" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #0077be;" text="1" textFill="WHITE" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
                <toggleGroup>
                   <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level2" mnemonicParsing="false" onAction="#level2Pressed" prefHeight="25.0" prefWidth="68.0" text="2" toggleGroup="$toggleGroup" GridPane.columnIndex="2">
+            <ToggleButton fx:id="level2" mnemonicParsing="false" onAction="#level2Pressed" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #0077be;" text="2" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level3" mnemonicParsing="false" onAction="#level3Pressed" prefHeight="25.0" prefWidth="58.0" text="3" toggleGroup="$toggleGroup" GridPane.columnIndex="3">
+            <ToggleButton fx:id="level3" mnemonicParsing="false" onAction="#level3Pressed" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #0077be;" text="3" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level4" mnemonicParsing="false" onAction="#level4Pressed" prefHeight="25.0" prefWidth="74.0" text="4" toggleGroup="$toggleGroup" GridPane.columnIndex="4">
+            <ToggleButton fx:id="level4" mnemonicParsing="false" onAction="#level4Pressed" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #0077be;" text="4" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="4">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level5" mnemonicParsing="false" onAction="#level5Pressed" prefHeight="25.0" prefWidth="104.0" text="5" toggleGroup="$toggleGroup" GridPane.columnIndex="5">
+            <ToggleButton fx:id="level5" mnemonicParsing="false" onAction="#level5Pressed" prefHeight="25.0" prefWidth="104.0" style="-fx-background-color: #0077be;" text="5" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="5">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level6" mnemonicParsing="false" onAction="#level6Pressed" prefHeight="25.0" prefWidth="82.0" text="6" toggleGroup="$toggleGroup" GridPane.columnIndex="6">
+            <ToggleButton fx:id="level6" mnemonicParsing="false" onAction="#level6Pressed" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #0077be;" text="6" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="6">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level7" mnemonicParsing="false" onAction="#level7Pressed" prefHeight="25.0" prefWidth="83.0" text="7" toggleGroup="$toggleGroup" GridPane.columnIndex="7">
+            <ToggleButton fx:id="level7" mnemonicParsing="false" onAction="#level7Pressed" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #0077be;" text="7" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="7">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level8" mnemonicParsing="false" onAction="#level8Pressed" prefHeight="25.0" prefWidth="82.0" text="8" toggleGroup="$toggleGroup" GridPane.columnIndex="8">
+            <ToggleButton fx:id="level8" mnemonicParsing="false" onAction="#level8Pressed" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #0077be;" text="8" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="8">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level9" mnemonicParsing="false" onAction="#level9Pressed" prefHeight="25.0" prefWidth="85.0" text="9" toggleGroup="$toggleGroup" GridPane.columnIndex="9">
+            <ToggleButton fx:id="level9" mnemonicParsing="false" onAction="#level9Pressed" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #0077be;" text="9" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="9">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton fx:id="level10" mnemonicParsing="false" onAction="#level10Pressed" prefHeight="25.0" prefWidth="82.0" text="10" toggleGroup="$toggleGroup" GridPane.columnIndex="10">
+            <ToggleButton fx:id="level10" mnemonicParsing="false" onAction="#level10Pressed" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #0077be;" text="10" textFill="WHITE" toggleGroup="$toggleGroup" GridPane.columnIndex="10">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="Loma" size="13.0" />
+               </font>
             </ToggleButton>
          </children>
       </GridPane>
-      <Button fx:id="continueButton" layoutX="415.0" layoutY="337.0" mnemonicParsing="false" onAction="#continueToQuiz" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #32cd32;" text="Continue" textFill="#fcfcfc">
+      <Button fx:id="continueButton" layoutX="415.0" layoutY="337.0" mnemonicParsing="false" onAction="#continueToQuiz" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #4CBB17;" text="CONTINUE. . ." textFill="#fcfcfc">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="25.0" layoutY="337.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #ff0000;" text="Return to main menu" textFill="#f8f8f8">
+      <Button layoutX="25.0" layoutY="337.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #933D41;" text="MAIN MENU. . ." textFill="#f8f8f8">
          <font>
             <Font name="Loma" size="14.0" />
          </font></Button>
