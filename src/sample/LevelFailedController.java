@@ -52,7 +52,6 @@ public class LevelFailedController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("fsdfdsfdsfdsdfddf");
         if (Level.getCurrentlevel() >= 10) {
             nextLevel.setDisable(true);
         }

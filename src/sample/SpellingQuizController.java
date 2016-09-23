@@ -133,7 +133,7 @@ public class SpellingQuizController implements Initializable {
 
         } else {
             _inputField.setStyle("-fx-background-color:  #933D41");
-            
+
         }
     }
 
