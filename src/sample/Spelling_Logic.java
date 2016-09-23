@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.istack.internal.NotNull;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -69,7 +70,6 @@ public class Spelling_Logic {
 
         }
 
-        System.out.println(_wordList.size());
 
         _numWords = _wordList.size();
 
@@ -89,7 +89,7 @@ public class Spelling_Logic {
             _word = new Word(_wordList.get(_position),Level.getCurrentlevel());
 
             Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
-            System.out.println("Spell word: " + _wordList.get(_position));
+
             _inputFlag = true;
             return;
 
@@ -103,7 +103,7 @@ public class Spelling_Logic {
 
                 Festival.callFestival("Correct, well done");
 
-                System.out.println("correct! hello");
+
 
                 if (!_isNewQuiz) {
                     _revisionData.removeFromLevel(_word);
@@ -124,7 +124,7 @@ public class Spelling_Logic {
             } else {
 
                 Festival.callFestival("Incorrect! Please try again. " + _wordList.get(_position) + "... " + _wordList.get(_position));
-                System.out.println("incorrect, try again");
+
 
                 _repeatFlag = true;
                 return;
@@ -137,7 +137,7 @@ public class Spelling_Logic {
             _word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             if (_wordList.get(_position).toLowerCase().trim().equals(input.toLowerCase().trim())) {
                 Festival.callFestival("Correct");
-                System.out.println("correct!");
+
 
                 if (!_isNewQuiz) {
                     _revisionData.removeFromLevel(_word);
@@ -155,7 +155,7 @@ public class Spelling_Logic {
 
             } else {
                 Festival.callFestival("Incorrect...");
-                System.out.println("incorrect");
+
 
 
 
@@ -179,16 +179,17 @@ public class Spelling_Logic {
         _repeatFlag = false;
         _position++;
 
-        System.out.println("position: " + _position + "    numwords: " + _numWords);
+
         if (_position < _numWords ) {
             _word = new Word(_wordList.get(_position), Level.getCurrentlevel());
             Festival.callFestival("Please spell the word " + _wordList.get(_position) +" ... " + _wordList.get(_position));
-            System.out.println("Spell word: " + _wordList.get(_position));
+
             return;
         } else {
-            System.out.println("Quiz finished");
+
 
             if (Level.getCurrentlevel() <= 10) {
+
                 if (_stats.levelPassed()) {
                     levelComplete();
                 } else {

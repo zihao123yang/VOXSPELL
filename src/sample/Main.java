@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/**
+ * a simple javaFX program which acts as a spelling aid
+ */
 public class Main extends Application {
 
     private DataBase _dataBase = DataBase.getInstance();
@@ -17,8 +21,12 @@ public class Main extends Application {
     private RevisionQuiz _revisionData = RevisionQuiz.getInstance();
 
 
-
-    // start method is the entry point for all javafx applications, launch calls start
+    /**
+     * loads the primary stage sample.fxml which acts as the main menu
+     * populates the database
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -40,9 +48,12 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * called when application is closed, saving statistics to database
+     */
     @Override
     public void stop() {
-        System.out.println("stage is closing");
+
 
         try {
             _dataBase.saveStats();
@@ -53,6 +64,10 @@ public class Main extends Application {
 
     }
 
+    /**
+     * returns the primary stage
+     * @return
+     */
     public static Stage getPrimaryStage() {
 
         return _primaryStage;
@@ -64,8 +79,6 @@ public class Main extends Application {
     public static void main(String[] args) {
 
         launch(args);
-
-        //Festival.callFestival("correct");
 
     }
 }

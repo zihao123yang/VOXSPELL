@@ -102,8 +102,7 @@ public class DataBase {
 
             while ((currentLine = br.readLine()) != null) {
                 if (currentLine.charAt(0) == '%') {
-                    System.out.println(currentLine);
-                    System.out.println(level);
+
                     levelList = new ArrayList<String>();
                     if (level < 11 && level > 0) {
                         _wordList.put(level, levelList);
@@ -162,7 +161,6 @@ public class DataBase {
 */
 
         if (level > 10) {
-            System.out.println("no more levels");
             return null;
         } else if (size >= 10) {
             return new ArrayList<String> (levelList.subList(0, 10));
@@ -238,16 +236,15 @@ public class DataBase {
 
     public void printSavedFIles() {
 
-        System.out.println("storedStats:");
+
         for (int i = 0; i < _storedStats.size(); i++) {
-            System.out.print(_storedStats.get(i).name() + " ");
+
         }
 
-        System.out.println("");
-        System.out.println("failedList:");
+
 
         for (int i =0; i < _failedList.size(); i++) {
-            System.out.print(_failedList.get(i).name());
+
         }
 
     }
