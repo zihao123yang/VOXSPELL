@@ -15,15 +15,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+/**
+ * is a javaFX controller class for the sample.fxml scene, where the sample.fxml scene represents the quiz's main menu.
+ */
 public class Controller implements Initializable {
 
+    // singleton DataBase object
     private DataBase _dataBase = DataBase.getInstance();
 
 
-    @FXML
-    private Pane newQuizButton;
-
-
+    /**
+     * controls the logic for the new spelling quiz pane in the main menu, taking the user to a new scene SelectQuizSettings.fxml
+     * @throws IOException
+     */
     @FXML
     public void newSpellingQuizClicked() throws IOException {
 
@@ -33,6 +38,10 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    /**
+     * controls the logic for the new review quiz pane in the main menu, taking the user to a new scene RevisionSettings.fxml
+     * @throws IOException
+     */
     public void reviewQuizClicked() throws IOException {
         Stage stage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("RevisionSettings.fxml"));
@@ -41,6 +50,10 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * controls the logic for the view statistics pane in the main menu, taking the user to a new scene ViewStatsScene.fxml
+     * @throws IOException
+     */
     public void viewStatisticsClicked() throws IOException {
         Stage stage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(getClass().getResource("ViewStatsScene.fxml"));
@@ -49,6 +62,10 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * controls the logic for the clear statistics pane in the main menu, taking the user to a new scene ClearStatisticsScene.fxml
+     * @throws IOException
+     */
     public void clearStatisticsClicked() throws IOException {
 
         Stage stage = Main.getPrimaryStage();
@@ -58,7 +75,11 @@ public class Controller implements Initializable {
     }
 
 
-
+    /**
+     * is called when the program (VOXSPELL) is started, printing the saved files from the database
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

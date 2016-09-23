@@ -14,13 +14,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by eli on 22/09/16.
+ * A javaFX controller class for the ClearStatisticsScene.fxml
  */
 public class ClearStatisticsScene implements Initializable{
 
+    // Stores a referenence to the singleton DataBase and RevisionQuiz objects
     DataBase _db = DataBase.getInstance();
     RevisionQuiz _rv = RevisionQuiz.getInstance();
 
+
+    // FXML GUI component fields
     @FXML
     Label yesLabel;
 
@@ -36,8 +39,16 @@ public class ClearStatisticsScene implements Initializable{
     @FXML
     Button noButton;
 
+
+    /**
+     * called on startup of the ClearStatisticsScene.fxml, accessed via the main menu.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //certain buttons should only be visible after the user makes a decision
         yesLabel.setVisible(false);
         noLabel.setVisible(false);
         mainMenuButton.setVisible(false);
@@ -45,7 +56,9 @@ public class ClearStatisticsScene implements Initializable{
     }
 
 
-
+    /**
+     * clears the statistics when the user presses yes and gives the option to return to the main menu
+     */
     public void yesPressed(){
         yesLabel.setVisible(true);
 
@@ -62,6 +75,10 @@ public class ClearStatisticsScene implements Initializable{
 
     }
 
+
+    /**
+     * does not clear any statistics, offerst the option to return to the main menu
+     */
     public void noPressed(){
 
         noLabel.setVisible(true);
@@ -75,9 +92,13 @@ public class ClearStatisticsScene implements Initializable{
 
     }
 
+    /**
+     * controls the return to the main menu after the user makes a decision on whether or not they should clear statistics
+     * @throws IOException
+     */
     public void mainMenuPressed() throws IOException{
         Stage stage = Main.getPrimaryStage();
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml")); //sample.fxml is the main menu scene
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
