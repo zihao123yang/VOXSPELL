@@ -239,7 +239,7 @@ public class Spelling_Logic {
 
         try {
             Stage stage = Main.getPrimaryStage();
-            Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("LevelFailed1.fxml"));
             stage.setScene(new Scene(root, 600, 400));
             stage.show();
         } catch (Exception e) {
