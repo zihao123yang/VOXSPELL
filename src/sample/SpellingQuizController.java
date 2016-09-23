@@ -18,9 +18,21 @@ import java.util.ResourceBundle;
  */
 public class SpellingQuizController implements Initializable {
 
-    private Spelling_Logic _spellingLogic = new Spelling_Logic();
+
+    Statistics _stats = new Statistics();
 
 
+    private Spelling_Logic _spellingLogic = new Spelling_Logic(_stats);
+
+
+    @FXML
+    private Text _levelAccuracyText;
+
+    @FXML
+    private Text _testAccuracyText;
+
+    @FXML
+    private Text _levelText;
 
     @FXML
     private ComboBox selectVoice;
@@ -35,14 +47,18 @@ public class SpellingQuizController implements Initializable {
 
     ObservableList<String> voiceList = FXCollections.observableArrayList("voice_kal_diphone", "voice_akl_nz_jdt_diphone");
 
-    @FXML
-    public void userInput() {
+   // @FXML
+    //public void userInput() {
 
-        String answer = _inputField.getCharacters().toString();
-        _inputField.clear();
 
-        _spellingLogic.spellingQuiz(answer);
-    }
+       // String answer = _inputField.getCharacters().toString();
+//        _inputField.clear();
+
+
+
+  //     _spellingLogic.spellingQuiz(answer);
+    //    _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy());
+    //}
 
     @FXML
     public void textFieldClicked() {
@@ -59,19 +75,38 @@ public class SpellingQuizController implements Initializable {
         int iteration = _spellingLogic.whichIteration();
 
         if(iteration == 1) {        // mastered, ...
+
             if (_spellingLogic.spellingCorrect(userInput)) {
+
+                _stats.increaseMastered();
+                System.out.println();
+                System.out.println("num mastered: " + _stats._mastered);
+                System.out.println();
+                System.out.println("words tested: " + _stats._wordsTested);
+                System.out.println();
+                _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
                 //-------------------------------------------------------------------
             } else {
                 //----------------------------------------
             }
 
         } else if (iteration == 2) {    //faulted, failed
+
             if (_spellingLogic.spellingCorrect(userInput)) {
-                //-----------------------------------------------------------
+                _stats.increaseFaulted();
+
             } else {
-                //-----------------------------------------------
+                _stats.increaseFailed();
             }
+            System.out.println();
+            System.out.println("num mastered: " + _stats._mastered);
+            System.out.println();
+            System.out.println("words tested: " + _stats._wordsTested);
+            System.out.println();
+            _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy());
         }
+
+
 
         _spellingLogic.spellingQuiz(userInput);
 
@@ -103,6 +138,12 @@ public class SpellingQuizController implements Initializable {
 
         _spellingLogic.setUpQuiz();
         _spellingLogic.spellingQuiz("");
+
+        System.out.println(Level.getCurrentlevel());
+
+        _levelText.setText("SPELLING QUIZ LEVEL: " +  Level.getCurrentlevel());
+        _testAccuracyText.setText("TEST ACCURACY: 100%");
+
 
 
 

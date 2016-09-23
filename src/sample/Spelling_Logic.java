@@ -28,11 +28,13 @@ public class Spelling_Logic {
 
 
 
-    public Spelling_Logic() {
+    public Spelling_Logic(Statistics stats) {
 
         _dataBase = DataBase.getInstance();
         _revisionData = RevisionQuiz.getInstance();
         _wordList = new ArrayList<String>();
+        _stats = stats;
+
     }
 
 
@@ -73,7 +75,7 @@ public class Spelling_Logic {
 
         _position = 0;
 
-        _stats = new Statistics(_wordList.size());
+        _stats.setNumWords(_wordList.size());
 
     }
 
@@ -115,7 +117,7 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(_word);
                 }
 
-                _stats.increaseMastered();
+                //_stats.increaseMastered();
 
             } else {
 
@@ -147,7 +149,7 @@ public class Spelling_Logic {
                     _dataBase.addToWordList(_word);
                 }
 
-                _stats.increaseFaulted();
+                //_stats.increaseFaulted();
 
             } else {
                 Festival.callFestival("Incorrect...");
@@ -166,7 +168,7 @@ public class Spelling_Logic {
                 }
 
                // _revisionData.addToFailed(word);
-                _stats.increaseFailed();
+                //_stats.increaseFailed();
 
 
             }

@@ -14,13 +14,18 @@ public class Statistics {
     int _wordsTested;
 
 
-    public Statistics(int numWords) {
-        _numWords = numWords;
+    public Statistics() {
+        _numWords = 0;
         _mastered = 0;
         _faulted = 0;
         _failed = 0;
         _wordsTested = 0;
     }
+
+    public void setNumWords(int num) {
+        _numWords = num;
+    }
+
 
     public void increaseMastered() {
         _mastered++;
@@ -37,8 +42,14 @@ public class Statistics {
         _wordsTested++;
     }
 
+    /**
+     * returns accuarcy as a percentage
+     * @return
+     */
     public double calculateAccurracy() {
-        return _mastered/_wordsTested;
+
+
+        return Math.round(((double)_mastered)/((double)_wordsTested)*100);
     }
 
     public boolean levelPassed() {
