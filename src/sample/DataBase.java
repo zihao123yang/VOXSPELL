@@ -15,7 +15,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.*;
 
-
+/**
+ * representation of the database for our program, stores words from text file, and also the statistics for words seen in the spelling quiz
+ */
 public class DataBase {
 
     private static DataBase instance = null;
@@ -49,8 +51,10 @@ public class DataBase {
     }
 
 
-
-
+    /**
+     * saves statistics when program closes
+     * @throws IOException
+     */
     public void saveStats() throws IOException {
         FileOutputStream fileOut = new FileOutputStream(_statsFile);
         ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -67,6 +71,11 @@ public class DataBase {
     }
 
 
+    /**
+     * load stats when program opens
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void loadStats() throws IOException, ClassNotFoundException {
         if (!_statsFile.exists()) {
             return;
@@ -91,6 +100,9 @@ public class DataBase {
     }
 
 
+    /**
+     * imports words from file and puts into hashmap with levels as keys
+     */
     public void importWordList() {
 
         String currentLine;
@@ -121,44 +133,16 @@ public class DataBase {
     }
 
 
+    /**
+     * makes list of words for quiz
+     * @param level
+     * @return
+     */
     public ArrayList<String> makeQuizList(int level) {
-//        System.out.println("entering method");
-//        int lowerBound = _wordList.indexOf(Integer.toString(level));
-//        System.out.println("lowerBound: "+ lowerBound);
-//        int upperBound = _wordList.indexOf(level++);
-//        System.out.println("upperBound: " + upperBound);
-//        int size = upperBound - (lowerBound + 1);
-//        ArrayList<String> levelList = new ArrayList<String>();
-//        ArrayList<String> newQuiz = new ArrayList<String>();
 //
-//        for (int i = lowerBound  + 1; i < upperBound; i++) {
-//            levelList.add(_wordList.get(i));
-
-
         ArrayList<String> levelList = _wordList.get(level);
         int size = levelList.size();
         randomizeList(levelList);
-
-/*
-        //--------------------------------------------------------
-        for  (int debug = 0; debug < levelList.size(); debug++) {
-            System.out.print(levelList.get(debug) + " ");
-        }
-        System.out.println();
-        //--------------------------------------------------------
-
-
-        randomizeList(levelList);
-
-
-        //--------------------------------------------------------
-        for  (int debug = 0; debug < levelList.size(); debug++) {
-            System.out.print(levelList.get(debug) + " ");
-        }
-        System.out.println();
-        //--------------------------------------------------------
-
-*/
 
         if (level > 10) {
             return null;
@@ -176,13 +160,15 @@ public class DataBase {
     }
 
 
-
     public void sortList() {
         Collections.sort(_storedStats);
 
     }
 
 
+    /**
+     * clears stats file
+     */
     public void clearStats() {
         _storedStats = new ArrayList<Word>();
         _failedList = new ArrayList<Word>();
@@ -249,6 +235,11 @@ public class DataBase {
 
     }
 
+    /**
+     * checks if word has already previously appeared in quiz
+     * @param word
+     * @return
+     */
     public boolean wordSeen(Word word) {
         if (_storedStats.contains(word)) {
             return true;
@@ -257,6 +248,11 @@ public class DataBase {
         }
     }
 
+    /**
+     * get the list of words for a particular level for stats
+     * @param word
+     * @return
+     */
     public Word getWordStatsList(Word word) {
 
 

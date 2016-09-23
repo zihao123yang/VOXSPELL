@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.*;
 
 /**
+ * Stores data for the revision quiz, revision quiz related logic is presented here
  * Created by zihao123yang on 22/09/16.
  */
 public class RevisionQuiz {

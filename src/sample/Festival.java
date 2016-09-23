@@ -3,6 +3,7 @@ package sample;
 import java.io.*;
 
 /**
+ * This class is used for all festival related calls
  * Created by zihao123yang on 21/09/16.
  */
 public class Festival {
@@ -30,6 +31,10 @@ public class Festival {
     }
 
 
+    /**
+     * festival call from bash
+     * @param sayThis
+     */
     public static void callFestival(String sayThis) {
         String cmd = "festival -b festival.scm";
 
@@ -46,7 +51,10 @@ public class Festival {
     }
 
 
-
+    /**
+     * writing to .scm file for festival call
+     * @param sayThis
+     */
     public static void writeSayThis(String sayThis) {
 
         try {
@@ -70,7 +78,9 @@ public class Festival {
     }
 
 
-
+    /**
+     * deleting the .scm file
+     */
     public static void deleteFile() {
 
         File file = new File("festival.scm");

@@ -222,35 +222,40 @@ public class Spelling_Logic {
 
 
 
-    public void levelComplete()  {
-        Stage stage = Main.getPrimaryStage();
-        Parent root = null;
+    public void levelComplete() {
 
         try {
-            root = FXMLLoader.load(getClass().getResource("LevelComplete.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+            Stage stage = Main.getPrimaryStage();
+            Parent root = FXMLLoader.load(getClass().getResource("LevelComplete.fxml"));
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (Exception e) {
+
         }
 
-        Level.nextlevelUnlocked();
-
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
     }
 
     public void levelFailed() {
-        Stage stage = Main.getPrimaryStage();
-        Parent root = null;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("LevelFailed1.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+            Stage stage = Main.getPrimaryStage();
+            Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (Exception e) {
+
         }
+    }
 
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();
+    public void revisionComplete() {
+        try {
+            Stage stage = Main.getPrimaryStage();
+            Parent root = FXMLLoader.load(getClass().getResource("RevisionComplete.fxml"));
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (Exception e) {
 
+        }
     }
 
     public void addFailedStats() {
