@@ -64,25 +64,28 @@ public class Statistics {
 
     public double calculateLevelAccuracy(int level) {
 
-        double numMasteredOnLevel = 0;
-        double wordsAppearedOnLevel = 0;
+        int numMasteredOnLevel = 0;
+        int wordsAppearedOnLevel = 0;
 
 
 
         for(Word word : _db.getStoredStats()){
             if(word.getLevel() == level){
 
-                wordsAppearedOnLevel = word.getNumFailed() + word.getNumFaulted() + word.getNumMastered();
-                numMasteredOnLevel = word.getNumMastered();
+                wordsAppearedOnLevel += word.getNumFailed() + word.getNumFaulted() + word.getNumMastered();
+                numMasteredOnLevel += word.getNumMastered();
             }
         }
+
+        System.out.println("num mastered" + numMasteredOnLevel);
+        System.out.println("words appeared on lvl" + wordsAppearedOnLevel);
 
         if (wordsAppearedOnLevel == 0){
             System.out.println("User has not attempted quiz for this level");
             return 100.0;
         }
 
-        return Math.round(numMasteredOnLevel/wordsAppearedOnLevel);
+        return Math.round(((double)numMasteredOnLevel)/((double)wordsAppearedOnLevel)*100);
 
     }
 
