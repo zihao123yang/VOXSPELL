@@ -85,6 +85,7 @@ public class SpellingQuizController implements Initializable {
                 System.out.println("words tested: " + _stats._wordsTested);
                 System.out.println();
                 _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
+                _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateAccurracy() + "%");
                 //-------------------------------------------------------------------
             } else {
                 //----------------------------------------
@@ -94,6 +95,8 @@ public class SpellingQuizController implements Initializable {
 
             if (_spellingLogic.spellingCorrect(userInput)) {
                 _stats.increaseFaulted();
+                _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
+                _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateAccurracy() + "%");
 
             } else {
                 _stats.increaseFailed();
@@ -103,7 +106,8 @@ public class SpellingQuizController implements Initializable {
             System.out.println();
             System.out.println("words tested: " + _stats._wordsTested);
             System.out.println();
-            _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy());
+            _testAccuracyText.setText("TEST ACCURACY: " +  _stats.calculateAccurracy() + "%");
+            _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateAccurracy() + "%");
         }
 
 
@@ -142,7 +146,8 @@ public class SpellingQuizController implements Initializable {
         System.out.println(Level.getCurrentlevel());
 
         _levelText.setText("SPELLING QUIZ LEVEL: " +  Level.getCurrentlevel());
-        _testAccuracyText.setText("TEST ACCURACY: 100%");
+        _testAccuracyText.setText("TEST ACCURACY: 100.0%");
+        _levelAccuracyText.setText("LEVEL ACCURACY: " + _stats.calculateAccurracy() + "%");
 
 
 

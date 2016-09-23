@@ -12,6 +12,7 @@ public class Statistics {
     int _faulted;
     int _failed;
     int _wordsTested;
+    DataBase _db = DataBase.getInstance();
 
 
     public Statistics() {
@@ -60,4 +61,29 @@ public class Statistics {
         }
 
     }
+
+    public double calculateLevelAccuracy(int level) {
+
+        double numMasteredOnLevel = 0;
+        double wordsAppearedOnLevel = 0;
+
+
+
+        for(Word word : _db.getStoredStats()){
+            if(word.getLevel() == level){
+
+                wordsAppearedOnLevel = word.getNumFailed() + word.getNumFaulted() + word.getNumMastered();
+                numMasteredOnLevel = word.getNumMastered();
+            }
+        }
+
+        if (wordsAppearedOnLevel == 0){
+            System.out.println("User has not attempted quiz for this level");
+            return 100.0;
+        }
+
+        return Math.round(numMasteredOnLevel/wordsAppearedOnLevel);
+
+    }
+
 }
